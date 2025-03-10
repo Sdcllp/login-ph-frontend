@@ -1,12 +1,5 @@
 import React, { useState } from "react";
 
-// Define the API_BASE_URL here without login or users part
-const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL ||
-  (window.location.hostname === "localhost"
-    ? "http://localhost:5000/api"
-    : "https://login-ph-backend.vercel.app/api/auth");
-
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,8 +10,7 @@ const Login = ({ onLogin }) => {
     console.log({ email, password }); // ✅ Debugging
 
     try {
-      const res = await fetch(`${API_BASE_URL}/login`, {
-        // Use `login` endpoint here
+      const res = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -30,9 +22,9 @@ const Login = ({ onLogin }) => {
       if (!res.ok) throw new Error(data.msg || "Login failed");
 
       localStorage.setItem("token", data.token);
-      onLogin(); // Call onLogin callback passed from parent (App.js)
+      onLogin();
     } catch (err) {
-      setError(err.message); // Show error message if login fails
+      setError(err.message);
     }
   };
 
