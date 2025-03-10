@@ -37,16 +37,17 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
+    <div style={styles.container}>
+      <h2 style={styles.heading}>Login</h2>
+      {error && <p style={styles.error}>{error}</p>}
+      <form onSubmit={handleSubmit} style={styles.form}>
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          style={styles.input}
         />
         <input
           type="password"
@@ -54,11 +55,54 @@ const Login = ({ onLogin }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          style={styles.input}
         />
-        <button type="submit">Login</button>
+        <button type="submit" style={styles.button}>
+          Login
+        </button>
       </form>
     </div>
   );
+};
+
+const styles = {
+  container: {
+    maxWidth: "400px",
+    margin: "0 auto",
+    padding: "20px",
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    backgroundColor: "#fff",
+    textAlign: "center",
+  },
+  heading: {
+    marginBottom: "20px",
+    fontSize: "24px",
+    color: "#333",
+  },
+  error: {
+    color: "red",
+    marginBottom: "15px",
+  },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  input: {
+    padding: "10px",
+    margin: "10px 0",
+    borderRadius: "4px",
+    border: "1px solid #ccc",
+  },
+  button: {
+    padding: "12px",
+    backgroundColor: "#4CAF50",
+    color: "#fff",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer",
+    fontSize: "16px",
+  },
 };
 
 export default Login;
