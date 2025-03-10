@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 
+const API_BASE_URL =
+  process.env.REACT_APP_BASE_URL ||
+  (window.location.hostname === "localhost"
+    ? "http://localhost:5000/api/login"
+    : "https://login-ph-backend.vercel.app/api/login");
+
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,7 +16,7 @@ const Login = ({ onLogin }) => {
     console.log({ email, password }); // ✅ Debugging
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch(`${API_BASE_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
