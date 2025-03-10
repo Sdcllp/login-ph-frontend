@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 
+// Use the environment variable for API_BASE_URL
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL ||
+  (window.location.hostname === "localhost"
+    ? "http://localhost:5000/api/auth/login"
+    : "https://login-ph-backend.vercel.app/api/auth/login");
+
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,7 +17,8 @@ const Login = ({ onLogin }) => {
     console.log({ email, password }); // ✅ Debugging
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch(API_BASE_URL, {
+        // Use the API_BASE_URL here
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
