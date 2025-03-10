@@ -11,7 +11,7 @@ const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // New state for showing password
+  const [showPassword, setShowPassword] = useState(false); // To manage the visibility of the password
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,7 +50,7 @@ const Login = ({ onLogin }) => {
           required
           style={styles.input}
         />
-        <div style={styles.passwordContainer}>
+        <div style={styles.passwordWrapper}>
           <input
             type={showPassword ? "text" : "password"} // Toggle password visibility
             placeholder="Password"
@@ -59,12 +59,13 @@ const Login = ({ onLogin }) => {
             required
             style={styles.input}
           />
-          <span
-            onClick={() => setShowPassword(!showPassword)} // Toggle the state on click
-            style={styles.eyeIcon}
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)} // Toggle password visibility
+            style={styles.toggleButton}
           >
-            {showPassword ? "🙈" : "👁️"} {/* Eye icon for show/hide */}
-          </span>
+            {showPassword ? "Hide" : "Show"} {/* Text for show/hide */}
+          </button>
         </div>
         <button type="submit" style={styles.button}>
           Login
@@ -112,16 +113,19 @@ const styles = {
     cursor: "pointer",
     fontSize: "16px",
   },
-  passwordContainer: {
+  passwordWrapper: {
     position: "relative",
   },
-  eyeIcon: {
+  toggleButton: {
     position: "absolute",
     right: "10px",
     top: "50%",
     transform: "translateY(-50%)",
+    background: "none",
+    border: "none",
     cursor: "pointer",
-    fontSize: "18px",
+    fontSize: "16px",
+    color: "#007BFF", // Blue color for the text button
   },
 };
 
