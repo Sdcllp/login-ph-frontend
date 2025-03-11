@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaChevronRight, FaChevronDown, FaBars, FaTimes } from "react-icons/fa";
+import { FaChevronRight, FaChevronDown, FaBars } from "react-icons/fa";
 
 const Sidebar = ({ setActiveContent }) => {
   const [openSections, setOpenSections] = useState({});
@@ -86,39 +86,25 @@ const Sidebar = ({ setActiveContent }) => {
   ];
 
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
-      {/* Navbar */}
-      <div
+    <div style={{ display: "flex" }}>
+      {/* Sidebar Toggle Button */}
+      <button
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         style={{
-          width: "100%",
-          height: "60px",
-          backgroundColor: "#94a3b8",
-          color: "white",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0 20px",
           position: "fixed",
-          top: 0,
-          left: 0,
+          top: 10,
+          left: 10,
+          background: "transparent",
+          border: "none",
+          fontSize: "24px",
+          cursor: "pointer",
           zIndex: 1000,
+          color: "white",
+          display: isSidebarOpen ? "none" : "block",
         }}
       >
-        <h2 style={{ fontSize: "20px" }}>SDC STUDIO LLC</h2>
-        <button
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          style={{
-            background: "transparent",
-            border: "none",
-            fontSize: "24px",
-            cursor: "pointer",
-            color: "white",
-            display: "block",
-          }}
-        >
-          {isSidebarOpen ? <FaTimes /> : <FaBars />}
-        </button>
-      </div>
+        <FaBars />
+      </button>
 
       {/* Sidebar */}
       <div
@@ -129,15 +115,13 @@ const Sidebar = ({ setActiveContent }) => {
           height: "100vh",
           overflowY: "auto",
           transition: "width 0.3s",
-          paddingTop: "60px", // Navbar se neeche shift karega
-          whiteSpace: "nowrap",
+          paddingTop: isSidebarOpen ? "10px" : "0",
           position: "fixed",
           left: 0,
-          top: 0,
-          zIndex: 999,
+          top: "50px",
+          boxSizing: "border-box",
         }}
       >
-        {/* Sidebar Content */}
         <h2
           style={{
             padding: "15px",
@@ -234,20 +218,6 @@ const Sidebar = ({ setActiveContent }) => {
             )}
           </div>
         ))}
-      </div>
-
-      {/* Right Side Content */}
-      <div
-        style={{
-          flex: "1",
-          padding: "80px 20px",
-          overflowY: "auto",
-          backgroundColor: "#f8f9fa",
-          marginLeft: isSidebarOpen ? "280px" : "0",
-          transition: "margin-left 0.3s",
-        }}
-      >
-        <h1>Welcome to the Dashboard</h1>
       </div>
     </div>
   );
