@@ -17,7 +17,7 @@ const Sidebar = ({ setActiveContent }) => {
     setActiveContent(path);
   };
 
-  const sections = [{ name: "PH Studio", path: "phstudio" }];
+ const sections = [{ name: "PH Studio", path: "phstudio" }];
 
   const collapsibleSections = [
     {
@@ -36,6 +36,52 @@ const Sidebar = ({ setActiveContent }) => {
         },
         { name: "General BIM Guidelines", path: "general-bim" },
       ],
+    },
+    {
+      title: "Project Type 1",
+      key: "project-type-1",
+      path: "project-type-1",
+      items: [
+        { name: "Base file", path: "base-file" },
+        {
+          name: "Architecture Sheets",
+          path: "architecture-sheets",
+          subItems: [
+            {
+              name: "Floor Plans (Series A1.01)",
+              path: "floor-plans-series-a101",
+              subItems: [
+                { name: "Floor Plans", path: "floor-plans" },
+                { name: "RCP", path: "rcp" },
+                { name: "Equipment Plan", path: "equipment-plan" },
+              ],
+            },
+          ],
+        },
+        { name: "Elevations", path: "elevations" },
+        { name: "Sections", path: "sections" },
+        {
+          name: "Interior Elevations",
+          path: "interior-elevations",
+          subItems: [{ name: "Enlarge restrooms", path: "enlarge-restrooms" }],
+        },
+      ],
+    },
+    {
+      title: "Site Plan (series A0.01...)",
+      key: "site-plans-series-a101",
+      path: "site-plans-series-a101",
+      items: [
+        { name: "Site Plans", path: "site-plans" },
+        { name: "Site Details", path: "site-details" },
+        { name: "Fire Lane Plan", path: "fire-lane-plan" },
+      ],
+    },
+    {
+      title: "Fuel Drawing",
+      key: "fuel-drawing",
+      path: "fuel-drawing",
+      items: [{ name: "Piping Drawing", path: "piping-drawing" }],
     },
   ];
 
