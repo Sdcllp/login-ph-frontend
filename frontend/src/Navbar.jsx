@@ -12,9 +12,9 @@ const Navbar = () => {
         position: "fixed",
         top: 0,
         left: 0,
-        height: "20px",
+        height: "30px",
         boxSizing: "border-box",
-        zIndex: 1000,
+        zIndex: 9000,
       }}
     >
       <h2 style={{ fontSize: "18px", fontWeight: "bold", margin: 0 }}>
