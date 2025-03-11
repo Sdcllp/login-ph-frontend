@@ -17,7 +17,7 @@ const Sidebar = ({ setActiveContent }) => {
     setActiveContent(path);
   };
 
- const sections = [{ name: "PH Studio", path: "phstudio" }];
+  const sections = [{ name: "PH Studio", path: "phstudio" }];
 
   const collapsibleSections = [
     {
@@ -86,12 +86,12 @@ const Sidebar = ({ setActiveContent }) => {
   ];
 
   return (
-    <div style={{ display: "flex" }}>
-      {/* Sidebar Toggle Button */}
+    <div style={{ display: "flex", height: "100vh" }}>
+      {/* Sidebar Toggle Button (Visible only on small screens) */}
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         style={{
-          position: "fixed",
+          position: "absolute",
           top: 10,
           left: 10,
           background: "transparent",
@@ -99,11 +99,10 @@ const Sidebar = ({ setActiveContent }) => {
           fontSize: "24px",
           cursor: "pointer",
           zIndex: 1000,
-          color: "white",
           display: isSidebarOpen ? "none" : "block", // Show only when sidebar is closed
         }}
       >
-        <FaBars />
+        <FaBars color="white" />
       </button>
 
       {/* Sidebar */}
@@ -116,10 +115,7 @@ const Sidebar = ({ setActiveContent }) => {
           overflowY: "auto",
           transition: "width 0.3s",
           paddingTop: isSidebarOpen ? "10px" : "0",
-          position: "fixed",
-          left: 0,
-          top: 0,
-          boxSizing: "border-box",
+          whiteSpace: "nowrap",
         }}
       >
         <h2
@@ -131,7 +127,7 @@ const Sidebar = ({ setActiveContent }) => {
             fontWeight: "bold",
           }}
         >
-          CONTENTS
+          SDC STUDIO LLC
         </h2>
 
         {sections.map((section) => (
@@ -224,11 +220,9 @@ const Sidebar = ({ setActiveContent }) => {
       <div
         style={{
           flex: "1",
-          marginLeft: isSidebarOpen ? "280px" : "0",
           padding: "20px",
           overflowY: "auto",
           backgroundColor: "#f8f9fa",
-          transition: "margin-left 0.3s",
         }}
       ></div>
     </div>
