@@ -12,7 +12,7 @@ const Navbar = () => {
         position: "fixed",
         top: 0,
         left: 0,
-        height: "30px",
+        height: "20px",
         boxSizing: "border-box",
         zIndex: 1000,
       }}
