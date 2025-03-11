@@ -7,11 +7,11 @@ const Navbar = ({ onLogout }) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
+        width: "100%",
         padding: "12px 20px",
         backgroundColor: "#9fb6c3",
         color: "white",
-        width: "100%", // Full width
-        position: "fixed", // Fixed on top
+        position: "fixed",
         top: 0,
         left: 0,
         zIndex: 1000,
@@ -19,14 +19,7 @@ const Navbar = ({ onLogout }) => {
       }}
     >
       {/* Logo / Title */}
-      <h2
-        style={{
-          fontSize: "18px",
-          fontWeight: "bold",
-          margin: 0,
-          whiteSpace: "nowrap", // Prevents breaking
-        }}
-      >
+      <h2 style={{ fontSize: "18px", fontWeight: "bold", margin: 0 }}>
         SDC STUDIO LLC
       </h2>
 
@@ -44,24 +37,6 @@ const Navbar = ({ onLogout }) => {
       >
         Logout
       </button>
-
-      {/* Responsive CSS */}
-      <style>
-        {`
-          @media (max-width: 768px) {
-            div {
-              padding: 10px 15px;
-            }
-            h2 {
-              font-size: 16px; /* Reduce title size */
-            }
-            button {
-              font-size: 12px;
-              padding: 6px 10px;
-            }
-          }
-        `}
-      </style>
     </div>
   );
 };
