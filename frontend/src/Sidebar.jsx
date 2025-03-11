@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { FaChevronRight, FaChevronDown, FaBars } from "react-icons/fa"; // Import icons
+import { FaChevronRight, FaChevronDown, FaBars, FaTimes } from "react-icons/fa";
 
 const Sidebar = ({ setActiveContent }) => {
   const [openSections, setOpenSections] = useState({});
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar toggle state
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const toggleSection = (section, path) => {
     setOpenSections((prev) => ({
@@ -87,23 +87,38 @@ const Sidebar = ({ setActiveContent }) => {
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
-      {/* Sidebar Toggle Button (Visible only on small screens) */}
-      <button
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      {/* Navbar */}
+      <div
         style={{
-          position: "absolute",
-          top: 10,
-          left: 10,
-          background: "transparent",
-          border: "none",
-          fontSize: "24px",
-          cursor: "pointer",
+          width: "100%",
+          height: "60px",
+          backgroundColor: "#94a3b8",
+          color: "white",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0 20px",
+          position: "fixed",
+          top: 0,
+          left: 0,
           zIndex: 1000,
-          display: isSidebarOpen ? "none" : "block", // Show only when sidebar is closed
         }}
       >
-        <FaBars color="white" />
-      </button>
+        <h2 style={{ fontSize: "20px" }}>SDC STUDIO LLC</h2>
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          style={{
+            background: "transparent",
+            border: "none",
+            fontSize: "24px",
+            cursor: "pointer",
+            color: "white",
+            display: "block",
+          }}
+        >
+          {isSidebarOpen ? <FaTimes /> : <FaBars />}
+        </button>
+      </div>
 
       {/* Sidebar */}
       <div
@@ -114,12 +129,15 @@ const Sidebar = ({ setActiveContent }) => {
           height: "100vh",
           overflowY: "auto",
           transition: "width 0.3s",
-          paddingTop: isSidebarOpen ? "10px" : "0",
+          paddingTop: "60px", // Navbar se neeche shift karega
           whiteSpace: "nowrap",
+          position: "fixed",
+          left: 0,
+          top: 0,
+          zIndex: 999,
         }}
       >
-        {/* Close Button */}
-
+        {/* Sidebar Content */}
         <h2
           style={{
             padding: "15px",
@@ -222,11 +240,15 @@ const Sidebar = ({ setActiveContent }) => {
       <div
         style={{
           flex: "1",
-          padding: "20px",
+          padding: "80px 20px",
           overflowY: "auto",
           backgroundColor: "#f8f9fa",
+          marginLeft: isSidebarOpen ? "280px" : "0",
+          transition: "margin-left 0.3s",
         }}
-      ></div>
+      >
+        <h1>Welcome to the Dashboard</h1>
+      </div>
     </div>
   );
 };
