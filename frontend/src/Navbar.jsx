@@ -24,15 +24,15 @@ const Navbar = () => {
         style={{
           backgroundColor: "#008080",
           color: "white",
-          borderRadius: "50%",
-          padding: "8px 12px",
-          borderRadius: "4px",
+          borderRadius: "50%",  // Yehi sahi value hai
           cursor: "pointer",
-          width: "20px",        
-         height: "20px", 
+          width: "30px",        // Thoda bada size rakhenge to clear dikhega
+          height: "30px", 
+          border: "none",       // Extra border ko remove karein
         }}
+        onClick={() => alert("Logout Clicked")}  // Example functionality
       >
-        Logout
+        🚪
       </button>
     </div>
   );
