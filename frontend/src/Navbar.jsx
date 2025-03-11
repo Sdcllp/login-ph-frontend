@@ -1,15 +1,18 @@
-import React from "react";
-
 const Navbar = ({ onLogout }) => {
   return (
     <div
       style={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between", // Content ko left & right distribute karega
+        justifyContent: "space-between",
         padding: "12px 20px",
         backgroundColor: "#9fb6c3",
         color: "white",
+        width: "100vw", // Ensure full width on mobile
+        position: "fixed", // Fixed at top
+        top: 0,
+        left: 0,
+        zIndex: 1000,
       }}
     >
       {/* Logo / Title */}
