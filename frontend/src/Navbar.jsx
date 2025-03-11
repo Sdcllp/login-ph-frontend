@@ -1,20 +1,15 @@
+import React from "react";
+
 const Navbar = ({ onLogout }) => {
   return (
     <div
       style={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
-        width: "100%",
+        justifyContent: "space-between", // Content ko left & right distribute karega
         padding: "12px 20px",
         backgroundColor: "#9fb6c3",
         color: "white",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        zIndex: 1000,
-        boxSizing: "border-box",
-        height: "50px", // FIXED: Define navbar height
       }}
     >
       {/* Logo / Title */}
