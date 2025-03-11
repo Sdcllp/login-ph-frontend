@@ -1,63 +1,54 @@
 import React from "react";
 
-const Navbar = ({ onLogout }) => {
+const Navbar = () => {
   return (
     <div
       style={{
         display: "flex",
-        alignItems: "center",
         justifyContent: "space-between",
-        padding: "12px 20px",
-        backgroundColor: "#9fb6c3",
-        color: "white",
-        flexWrap: "wrap", // Small screens par wrap karega
+        alignItems: "center",
+        backgroundColor: "#a0b8c8", // Navbar Background
+        padding: "10px 20px",
+        position: "fixed",
+        width: "100%",
+        top: 0,
+        left: 0,
+        zIndex: 1000,
       }}
     >
-      {/* Logo / Title */}
-      <h2
-        style={{
-          fontSize: "18px",
-          fontWeight: "bold",
-          margin: 0,
-          flex: "1",
-        }}
-      >
-        SDC STUDIO LLC
-      </h2>
+      {/* Left Side - Branding */}
+      <h2 style={{ margin: 0, fontSize: "20px", color: "#fff" }}>STUDIO LLC</h2>
 
-      {/* Logout Button */}
+      {/* Right Side - Logout Button */}
       <button
-        onClick={onLogout}
         style={{
-          backgroundColor: "#ff4d4d",
+          backgroundColor: "red",
           color: "white",
           border: "none",
-          padding: "8px 12px",
-          borderRadius: "4px",
+          padding: "8px 15px",
           cursor: "pointer",
+          borderRadius: "5px",
           fontSize: "14px",
         }}
       >
         Logout
       </button>
 
-      {/* Media Query for Small Screens */}
+      {/* Mobile Responsive CSS */}
       <style>
         {`
           @media (max-width: 768px) {
             div {
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
+              flex-direction: row;
+              justify-content: space-between;
               padding: 10px;
             }
             h2 {
-              font-size: 16px;
-              margin-bottom: 5px;
+              font-size: 18px;
             }
             button {
-              width: 100%;
-              max-width: 120px;
+              font-size: 12px;
+              padding: 5px 10px;
             }
           }
         `}
