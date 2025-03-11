@@ -8,11 +8,13 @@ const Navbar = ({ onLogout }) => {
         padding: "12px 20px",
         backgroundColor: "#9fb6c3",
         color: "white",
-        width: "100vw", // Ensure full width on mobile
-        position: "fixed", // Fixed at top
+        width: "100vw", // Full width
+        position: "fixed", // Stick to the top
         top: 0,
         left: 0,
-        zIndex: 1000,
+        height: "60px", // Fixed height
+        zIndex: 1000, // Ensure it stays on top
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", // Add shadow
       }}
     >
       {/* Logo / Title */}
