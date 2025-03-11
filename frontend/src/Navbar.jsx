@@ -66,7 +66,7 @@ const Navbar = ({ onLogout }) => {
           padding: "6px 15px",
           borderRadius: "4px",
           cursor: "pointer",
-          minWidth: "95px",
+          minWidth: "105px",
         }}
       >
         Logout
