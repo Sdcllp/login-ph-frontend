@@ -13,11 +13,12 @@ const Navbar = ({ onLogout }) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        flexWrap: "wrap", // Prevents content from overflowing
+        flexWrap: "wrap",  // Ensures content doesn't overflow
         padding: "12px 20px",
         backgroundColor: "#9fb6c3",
         color: "white",
-        width: "100vw", // Ensures full width in all screen sizes
+        width: "100%",       // Correct width setting
+        maxWidth: "100%",    // Prevents overflow issues
         boxSizing: "border-box",
       }}
     >
@@ -45,7 +46,6 @@ const Navbar = ({ onLogout }) => {
           borderRadius: "4px",
           cursor: "pointer",
           minWidth: "80px",
-          marginLeft: "auto", // Pushes the logout button to the right
         }}
       >
         Logout
@@ -87,8 +87,8 @@ const Navbar = ({ onLogout }) => {
             display: block;
           }
           button {
-            display: block; /* Show the logout button on mobile */
-            margin-top: 10px; /* Add some spacing */
+            display: block;
+            margin-top: 10px;
           }
         }
       `}</style>
