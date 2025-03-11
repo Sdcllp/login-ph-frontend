@@ -10,6 +10,10 @@ const Navbar = ({ onLogout }) => {
         padding: "12px 20px",
         backgroundColor: "#9fb6c3",
         color: "white",
+        position: "fixed",
+        top: 0,
+        left: 0,
+
       }}
     >
       {/* Logo / Title */}
