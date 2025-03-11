@@ -107,18 +107,17 @@ const Sidebar = ({ setActiveContent }) => {
 
       {/* Sidebar */}
       <div
-       
-  style={{
-    width: isSidebarOpen ? "100%" : "0", 
-    backgroundColor: "#1e293b",
-    color: "white",
-    height: "100vh",
-    overflowY: "auto",
-    transition: "width 0.3s, padding 0.3s", 
-    paddingTop: isSidebarOpen ? "0" : "0", 
-    whiteSpace: "nowrap",
-  }}
->
+        style={{
+          width: isSidebarOpen ? "280px" : "0",
+          backgroundColor: "#1e293b",
+          color: "white",
+          height: "100vh",
+          overflowY: "auto",
+          transition: "width 0.3s",
+          paddingTop: isSidebarOpen ? "10px" : "0",
+          whiteSpace: "nowrap",
+        }}
+      >
         {/* Close Button */}
 
         <h2
