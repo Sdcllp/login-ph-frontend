@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaChevronRight, FaChevronDown } from "react-icons/fa";
+import { FaChevronRight, FaChevronDown } from "react-icons/fa"; // Import chevron icons
 
 const Sidebar = ({ setActiveContent }) => {
   const [openSections, setOpenSections] = useState({});
@@ -76,10 +76,11 @@ const Sidebar = ({ setActiveContent }) => {
         { name: "Fire Lane Plan", path: "fire-lane-plan" },
       ],
     },
+
     {
       title: "Fuel Drawing",
       key: "fuel-drawing",
-      path: "fuel-drawing",
+      path: "fuel-drawing", // YEH LINE ADD KARO
       items: [{ name: "Piping Drawing", path: "piping-drawing" }],
     },
   ];
@@ -93,13 +94,6 @@ const Sidebar = ({ setActiveContent }) => {
         height: "100vh",
         overflowY: "auto",
         paddingTop: "10px",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        zIndex: 1000,
-        boxSizing: "border-box",
-        display: "flex",
-        flexDirection: "column",
       }}
     >
       <h2
@@ -123,6 +117,7 @@ const Sidebar = ({ setActiveContent }) => {
             alignItems: "center",
             padding: "12px",
             cursor: "pointer",
+            backgroundColor: "",
             transition: "background 0.3s",
           }}
           onMouseEnter={(e) => (e.target.style.backgroundColor = "#55677d")}
@@ -141,6 +136,7 @@ const Sidebar = ({ setActiveContent }) => {
               alignItems: "center",
               padding: "12px",
               cursor: "pointer",
+              backgroundColor: "",
               transition: "background 0.3s",
             }}
             onMouseEnter={(e) => (e.target.style.backgroundColor = "#55677d")}
