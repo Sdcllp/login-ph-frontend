@@ -117,7 +117,8 @@ const Sidebar = ({ setActiveContent }) => {
           paddingTop: isSidebarOpen ? "10px" : "0",
           whiteSpace: "nowrap",
           paddingLeft: "10px",
-          marginleft: "0";
+          marginLeft: "0",
+
         }}
       >
         {/* Close Button */}
