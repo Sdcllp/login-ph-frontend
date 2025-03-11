@@ -116,9 +116,6 @@ const Sidebar = ({ setActiveContent }) => {
           transition: "width 0.3s",
           paddingTop: isSidebarOpen ? "10px" : "0",
           whiteSpace: "nowrap",
-          paddingLeft: "10px",
-          marginLeft: "0",
-
         }}
       >
         {/* Close Button */}
