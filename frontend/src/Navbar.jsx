@@ -18,37 +18,40 @@ const Navbar = ({ onLogout }) => {
         color: "white",
         width: "100%",
         position: "relative",
+        boxSizing: "border-box", // Important for proper width
+        overflow: "hidden",     // Prevents layout overflow
       }}
     >
-      {/* Logo / Title */}
       <h2 style={{ fontSize: "18px", fontWeight: "bold", margin: 0 }}>
         SDC STUDIO LLC
       </h2>
 
-      {/* Hamburger Menu for Mobile */}
-      <div className="hamburger" onClick={toggleMenu} style={{ display: 'none', cursor: 'pointer' }}>
-        <div style={{ width: '25px', height: '3px', backgroundColor: 'white', margin: '4px' }}></div>
-        <div style={{ width: '25px', height: '3px', backgroundColor: 'white', margin: '4px' }}></div>
-        <div style={{ width: '25px', height: '3px', backgroundColor: 'white', margin: '4px' }}></div>
+      <div
+        className="hamburger"
+        onClick={toggleMenu}
+        style={{ display: "none", cursor: "pointer" }}
+      >
+        <div style={{ width: "25px", height: "3px", backgroundColor: "white", margin: "4px" }}></div>
+        <div style={{ width: "25px", height: "3px", backgroundColor: "white", margin: "4px" }}></div>
+        <div style={{ width: "25px", height: "3px", backgroundColor: "white", margin: "4px" }}></div>
       </div>
 
-      {/* Logout Button */}
-     button
+      <button
         onClick={onLogout}
         style={{
           backgroundColor: "#ff4d4d",
           color: "white",
           border: "none",
-          padding: "6px 10px", // Button height bhi adjust ki
+          padding: "6px 15px",
           borderRadius: "4px",
           cursor: "pointer",
-          minWidth: "75px",
+          minWidth: "80px",
+          marginRight: "10px", // Added spacing for proper alignment
         }}
       >
         Logout
       </button>
 
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <div
           style={{
@@ -59,7 +62,7 @@ const Navbar = ({ onLogout }) => {
             borderRadius: "4px",
             boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
             zIndex: 1000,
-            padding: "10px", // Added padding for better visibility
+            padding: "10px",
           }}
         >
           <button
@@ -85,7 +88,7 @@ const Navbar = ({ onLogout }) => {
             display: block;
           }
           button {
-            display: none; // Hide the button on mobile
+            display: none;
           }
         }
       `}</style>
