@@ -42,7 +42,7 @@ const Navbar = ({ onLogout }) => {
           padding: "8px 12px",
           borderRadius: "4px",
           cursor: "pointer",
-          marginLeft: "35px", // Adjusted margin to move it left
+          marginLeft: "50px", // Adjusted margin to move it left
         }}
       >
         Logout
