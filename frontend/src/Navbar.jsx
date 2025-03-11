@@ -11,8 +11,8 @@ const Navbar = ({ onLogout }) => {
         backgroundColor: "#9fb6c3",
         color: "white",
         position: "fixed",
-        top: 0,
-        left: 0,
+        width: "100%",
+        
 
       }}
     >
