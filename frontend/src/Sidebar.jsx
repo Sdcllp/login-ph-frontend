@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { FaChevronRight, FaChevronDown, FaBars } from "react-icons/fa";
+import { FaChevronRight, FaChevronDown, FaBars } from "react-icons/fa"; // Import icons
 
 const Sidebar = ({ setActiveContent }) => {
   const [openSections, setOpenSections] = useState({});
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar toggle state
 
   const toggleSection = (section, path) => {
     setOpenSections((prev) => ({
@@ -86,12 +86,12 @@ const Sidebar = ({ setActiveContent }) => {
   ];
 
   return (
-    <div style={{ display: "flex" }}>
-      {/* Sidebar Toggle Button */}
+    <div style={{ display: "flex", height: "100vh" }}>
+      {/* Sidebar Toggle Button (Visible only on small screens) */}
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         style={{
-          position: "fixed",
+          position: "absolute",
           top: 10,
           left: 10,
           background: "transparent",
@@ -99,11 +99,10 @@ const Sidebar = ({ setActiveContent }) => {
           fontSize: "24px",
           cursor: "pointer",
           zIndex: 1000,
-          color: "white",
-          display: isSidebarOpen ? "none" : "block",
+          display: isSidebarOpen ? "none" : "block", // Show only when sidebar is closed
         }}
       >
-        <FaBars />
+        <FaBars color="white" />
       </button>
 
       {/* Sidebar */}
@@ -116,12 +115,11 @@ const Sidebar = ({ setActiveContent }) => {
           overflowY: "auto",
           transition: "width 0.3s",
           paddingTop: isSidebarOpen ? "10px" : "0",
-          position: "fixed",
-          left: 0,
-          top: "50px",
-          boxSizing: "border-box",
+          whiteSpace: "nowrap",
         }}
       >
+        {/* Close Button */}
+
         <h2
           style={{
             padding: "15px",
@@ -219,6 +217,16 @@ const Sidebar = ({ setActiveContent }) => {
           </div>
         ))}
       </div>
+
+      {/* Right Side Content */}
+      <div
+        style={{
+          flex: "1",
+          padding: "20px",
+          overflowY: "auto",
+          backgroundColor: "#f8f9fa",
+        }}
+      ></div>
     </div>
   );
 };
