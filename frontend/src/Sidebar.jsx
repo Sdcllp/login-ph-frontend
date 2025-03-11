@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaChevronRight, FaChevronDown } from "react-icons/fa"; // Import chevron icons
+import { FaChevronRight, FaChevronDown } from "react-icons/fa";
 
 const Sidebar = ({ setActiveContent }) => {
   const [openSections, setOpenSections] = useState({});
@@ -25,14 +25,7 @@ const Sidebar = ({ setActiveContent }) => {
       path: "overview",
       items: [
         { name: "General Technical Guidelines", path: "general-technical" },
-        {
-          name: "General Drafting Guidelines",
-          path: "general-drafting",
-          subItems: [
-            { name: "Folder Structure", path: "folder-structure" },
-            { name: "File Naming", path: "file-naming" },
-          ],
-        },
+        { name: "General Drafting Guidelines", path: "general-drafting" },
         { name: "General BIM Guidelines", path: "general-bim" },
       ],
     },
@@ -42,28 +35,10 @@ const Sidebar = ({ setActiveContent }) => {
       path: "project-type-1",
       items: [
         { name: "Base file", path: "base-file" },
-        {
-          name: "Architecture Sheets",
-          path: "architecture-sheets",
-          subItems: [
-            {
-              name: "Floor Plans (Series A1.01)",
-              path: "floor-plans-series-a101",
-              subItems: [
-                { name: "Floor Plans", path: "floor-plans" },
-                { name: "RCP", path: "rcp" },
-                { name: "Equipment Plan", path: "equipment-plan" },
-              ],
-            },
-          ],
-        },
+        { name: "Architecture Sheets", path: "architecture-sheets" },
         { name: "Elevations", path: "elevations" },
         { name: "Sections", path: "sections" },
-        {
-          name: "Interior Elevations",
-          path: "interior-elevations",
-          subItems: [{ name: "Enlarge restrooms", path: "enlarge-restrooms" }],
-        },
+        { name: "Interior Elevations", path: "interior-elevations" },
       ],
     },
     {
@@ -76,7 +51,6 @@ const Sidebar = ({ setActiveContent }) => {
         { name: "Fire Lane Plan", path: "fire-lane-plan" },
       ],
     },
-
     {
       title: "Fuel Drawing",
       key: "fuel-drawing",
@@ -88,18 +62,17 @@ const Sidebar = ({ setActiveContent }) => {
   return (
     <div
       style={{
-        width: "280px",
+        width: "250px",
         backgroundColor: "#1e293b",
         color: "white",
         height: "100vh",
         overflowY: "auto",
-        paddingTop: "10px",
-        position: "fixed", // Fixed position for mobile responsiveness
+        position: "fixed",
         left: 0,
         top: 0,
         bottom: 0,
         zIndex: 1000,
-        transition: "transform 0.3s ease-in-out",
+        transition: "0.3s",
       }}
     >
       <h2
@@ -119,8 +92,6 @@ const Sidebar = ({ setActiveContent }) => {
           key={section.path}
           onClick={() => handleItemClick(section.path)}
           style={{
-            display: "flex",
-            alignItems: "center",
             padding: "12px",
             cursor: "pointer",
             transition: "background 0.3s",
@@ -159,77 +130,14 @@ const Sidebar = ({ setActiveContent }) => {
               {section.items.map((item) => (
                 <div key={item.path}>
                   <div
-                    onClick={() => {
-                      if (item.subItems) {
-                        toggleSection(item.path, item.path);
-                      } else {
-                        handleItemClick(item.path);
-                      }
-                    }}
+                    onClick={() => handleItemClick(item.path)}
                     style={{
-                      display: "flex",
-                      alignItems: "center",
                       padding: "10px 20px",
                       cursor: "pointer",
                     }}
                   >
-                    {openSections[item.path] ? (
-                      <FaChevronDown style={{ marginRight: "10px" }} />
-                    ) : (
-                      <FaChevronRight style={{ marginRight: "10px" }} />
-                    )}
                     {item.name}
                   </div>
-                  {item.subItems && openSections[item.path] && (
-                    <div style={{ paddingLeft: "20px" }}>
-                      {item.subItems.map((subItem) => (
-                        <div key={subItem.path}>
-                          <div
-                            onClick={() => {
-                              if (subItem.subItems) {
-                                toggleSection(subItem.path, subItem.path);
-                              } else {
-                                handleItemClick(subItem.path);
-                              }
-                            }}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              padding: "8px 20px",
-                              cursor: "pointer",
-                            }}
-                          >
-                            {openSections[subItem.path] ? (
-                              <FaChevronDown style={{ marginRight: "10px" }} />
-                            ) : (
-                              <FaChevronRight style={{ marginRight: "10px" }} />
-                            )}
-                            {subItem.name}
-                          </div>
-                          {subItem.subItems && openSections[subItem.path] && (
-                            <div style={{ paddingLeft: "30px" }}>
-                              {subItem.subItems.map((deepSubItem) => (
-                                <div
-                                  key={deepSubItem.path}
-                                  style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    padding: "8px 20px",
-                                    cursor: "pointer",
-                                  }}
-                                  onClick={() =>
-                                    handleItemClick(deepSubItem.path)
-                                  }
-                                >
-                                  {deepSubItem.name}
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
