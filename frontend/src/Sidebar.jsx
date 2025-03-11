@@ -23,7 +23,6 @@ const Sidebar = ({ setActiveContent }) => {
     {
       title: "Overview",
       key: "overview",
-      path: "overview",
       items: [
         { name: "General Technical Guidelines", path: "general-technical" },
         {
@@ -40,7 +39,6 @@ const Sidebar = ({ setActiveContent }) => {
     {
       title: "Project Type 1",
       key: "project-type-1",
-      path: "project-type-1",
       items: [
         { name: "Base file", path: "base-file" },
         {
@@ -70,7 +68,6 @@ const Sidebar = ({ setActiveContent }) => {
     {
       title: "Site Plan (series A0.01...)",
       key: "site-plans-series-a101",
-      path: "site-plans-series-a101",
       items: [
         { name: "Site Plans", path: "site-plans" },
         { name: "Site Details", path: "site-details" },
@@ -80,10 +77,10 @@ const Sidebar = ({ setActiveContent }) => {
     {
       title: "Fuel Drawing",
       key: "fuel-drawing",
-      path: "fuel-drawing",
       items: [{ name: "Piping Drawing", path: "piping-drawing" }],
     },
   ];
+
   return (
     <div style={{ display: "flex" }}>
       {/* Sidebar Toggle Button */}
@@ -133,6 +130,7 @@ const Sidebar = ({ setActiveContent }) => {
           CONTENTS
         </h2>
 
+        {/* Main Sections */}
         {sections.map((section) => (
           <div
             key={section.path}
@@ -147,6 +145,63 @@ const Sidebar = ({ setActiveContent }) => {
             {section.name}
           </div>
         ))}
+
+        {/* Collapsible Sections */}
+        {collapsibleSections.map((section) => (
+          <div key={section.key}>
+            {/* Section Title */}
+            <div
+              onClick={() => toggleSection(section.key)}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                padding: "12px",
+                cursor: "pointer",
+                background: "#2d3748",
+                fontWeight: "bold",
+              }}
+            >
+              {openSections[section.key] ? <FaChevronDown /> : <FaChevronRight />}
+              <span style={{ marginLeft: "8px" }}>{section.title}</span>
+            </div>
+
+            {/* Sub-items */}
+            {openSections[section.key] &&
+              section.items.map((item) => (
+                <div key={item.path}>
+                  <div
+                    onClick={() => handleItemClick(item.path)}
+                    style={{
+                      paddingLeft: "30px",
+                      cursor: "pointer",
+                      padding: "8px",
+                      background: "#1e293b",
+                    }}
+                  >
+                    {item.name}
+                  </div>
+
+                  {/* Sub-sub-items */}
+                  {item.subItems &&
+                    openSections[item.path] &&
+                    item.subItems.map((subItem) => (
+                      <div
+                        key={subItem.path}
+                        onClick={() => handleItemClick(subItem.path)}
+                        style={{
+                          paddingLeft: "50px",
+                          cursor: "pointer",
+                          padding: "6px",
+                          background: "#334155",
+                        }}
+                      >
+                        {subItem.name}
+                      </div>
+                    ))}
+                </div>
+              ))}
+          </div>
+        ))}
       </div>
 
       {/* Right Side Content (Fixed Overlap) */}
@@ -158,7 +213,7 @@ const Sidebar = ({ setActiveContent }) => {
           overflowY: "auto",
           backgroundColor: "#f8f9fa",
           transition: "margin-left 0.3s",
-          marginTop: "50px", // FIXED: Push content below navbar
+          marginTop: "50px", // Push content below navbar
         }}
       ></div>
     </div>
