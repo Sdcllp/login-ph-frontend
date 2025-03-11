@@ -13,19 +13,19 @@ const Navbar = ({ onLogout }) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        flexWrap: "nowrap", // Prevents items from breaking lines
         padding: "12px 20px",
         backgroundColor: "#9fb6c3",
         color: "white",
-        width: "100%",    // Correct width for full navbar
-        maxWidth: "100%", // Prevents overflow issues
+        width: "100%",
         boxSizing: "border-box",
+        position: "relative", // Ensure dropdown is positioned correctly
       }}
     >
       <h2 style={{ fontSize: "18px", fontWeight: "bold", margin: 0 }}>
         SDC STUDIO LLC
       </h2>
 
+      {/* Hamburger Menu for Mobile */}
       <div
         className="hamburger"
         onClick={toggleMenu}
@@ -36,6 +36,7 @@ const Navbar = ({ onLogout }) => {
         <div style={{ width: "25px", height: "3px", backgroundColor: "white", margin: "4px" }}></div>
       </div>
 
+      {/* Logout Button */}
       <button
         onClick={onLogout}
         style={{
@@ -51,6 +52,7 @@ const Navbar = ({ onLogout }) => {
         Logout
       </button>
 
+      {/* Mobile Menu */}
       {isMenuOpen && (
         <div
           style={{
@@ -62,6 +64,7 @@ const Navbar = ({ onLogout }) => {
             boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
             zIndex: 1000,
             padding: "10px",
+            width: "150px", // Set a width for the dropdown
           }}
         >
           <button
@@ -84,11 +87,10 @@ const Navbar = ({ onLogout }) => {
       <style jsx>{`
         @media (max-width: 768px) {
           .hamburger {
-            display: block;
+            display: block; // Show hamburger menu on mobile
           }
           button {
-            display: block;
-            margin-top: 10px;
+            display: none; // Hide the main logout button on mobile
           }
         }
       `}</style>
