@@ -17,7 +17,7 @@ const Sidebar = ({ setActiveContent }) => {
     setActiveContent(path);
   };
 
-  const sections = [{ name: "PH Studio", path: "phstudio" }];
+ const sections = [{ name: "PH Studio", path: "phstudio" }];
 
   const collapsibleSections = [
     {
@@ -86,7 +86,26 @@ const Sidebar = ({ setActiveContent }) => {
   ];
 
   return (
-    <div style={{ display: "flex", height: "100vh", position: "relative" }}>
+    <div style={{ display: "flex" }}>
+      {/* Sidebar Toggle Button */}
+      <button
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        style={{
+          position: "fixed",
+          top: 10,
+          left: 10,
+          background: "transparent",
+          border: "none",
+          fontSize: "24px",
+          cursor: "pointer",
+          zIndex: 1000,
+          color: "white",
+          display: isSidebarOpen ? "none" : "block", // Show only when sidebar is closed
+        }}
+      >
+        <FaBars />
+      </button>
+
       {/* Sidebar */}
       <div
         style={{
@@ -97,11 +116,10 @@ const Sidebar = ({ setActiveContent }) => {
           overflowY: "auto",
           transition: "width 0.3s",
           paddingTop: isSidebarOpen ? "10px" : "0",
-          whiteSpace: "nowrap",
-          position: "fixed", // Sidebar will stay fixed
-          top: "0px", // Make sure it's at the top
-          left: "0",
-          zIndex: "1001", // Higher than navbar
+          position: "fixed",
+          left: 0,
+          top: 0,
+          boxSizing: "border-box",
         }}
       >
         <h2
@@ -113,7 +131,7 @@ const Sidebar = ({ setActiveContent }) => {
             fontWeight: "bold",
           }}
         >
-          SDC STUDIO LLC
+          CONTENTS
         </h2>
 
         {sections.map((section) => (
@@ -201,6 +219,18 @@ const Sidebar = ({ setActiveContent }) => {
           </div>
         ))}
       </div>
+
+      {/* Right Side Content */}
+      <div
+        style={{
+          flex: "1",
+          marginLeft: isSidebarOpen ? "280px" : "0",
+          padding: "20px",
+          overflowY: "auto",
+          backgroundColor: "#f8f9fa",
+          transition: "margin-left 0.3s",
+        }}
+      ></div>
     </div>
   );
 };
