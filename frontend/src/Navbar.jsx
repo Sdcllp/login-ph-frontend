@@ -58,19 +58,21 @@ const Navbar = ({ onLogout }) => {
       </div>
 
       <button
-        onClick={onLogout}
-        style={{
-          backgroundColor: "#ff4d4d",
-          color: "white",
-          border: "none",
-          padding: "6px 10px",
-          borderRadius: "4px",
-          cursor: "pointer",
-          minWidth: "110px",
-        }}
-      >
-        Logout
-      </button>
+  onClick={onLogout}
+  style={{
+    backgroundColor: "#ff4d4d",
+    color: "white",
+    border: "none",
+    padding: "8px 20px", // Adjust padding for better shape
+    borderRadius: "20px", // Fully rounded corners
+    cursor: "pointer",
+    width: "auto", // Ensures button width matches text content
+    minWidth: "unset" // Removes fixed width
+  }}
+>
+  Logout
+</button>
+
 
       {isMenuOpen && (
         <div
