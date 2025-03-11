@@ -12,7 +12,7 @@ const Navbar = () => {
         position: "fixed",
         top: 0,
         left: 0,
-        height: "30px",
+        height: "35px",
         boxSizing: "border-box",
         zIndex: 9000,
       }}
@@ -22,12 +22,14 @@ const Navbar = () => {
       </h2>
       <button
         style={{
-          backgroundColor: "#ff4d4d",
+          backgroundColor: "#008080",
           color: "white",
-          border: "none",
+          borderRadius: "50%",
           padding: "8px 12px",
           borderRadius: "4px",
           cursor: "pointer",
+          width: "50px",        
+         height: "50px", 
         }}
       >
         Logout
