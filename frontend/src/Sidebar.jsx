@@ -86,25 +86,7 @@ const Sidebar = ({ setActiveContent }) => {
   ];
 
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
-      {/* Sidebar Toggle Button (Visible only on small screens) */}
-      <button
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        style={{
-          position: "absolute",
-          top: 10,
-          left: 10,
-          background: "transparent",
-          border: "none",
-          fontSize: "24px",
-          cursor: "pointer",
-          zIndex: 1000,
-          display: isSidebarOpen ? "none" : "block", // Show only when sidebar is closed
-        }}
-      >
-        <FaBars color="white" />
-      </button>
-
+    <div style={{ display: "flex", height: "100vh", position: "relative" }}>
       {/* Sidebar */}
       <div
         style={{
@@ -116,6 +98,10 @@ const Sidebar = ({ setActiveContent }) => {
           transition: "width 0.3s",
           paddingTop: isSidebarOpen ? "10px" : "0",
           whiteSpace: "nowrap",
+          position: "fixed", // Sidebar will stay fixed
+          top: "0px", // Make sure it's at the top
+          left: "0",
+          zIndex: "1001", // Higher than navbar
         }}
       >
         <h2
@@ -215,16 +201,6 @@ const Sidebar = ({ setActiveContent }) => {
           </div>
         ))}
       </div>
-
-      {/* Right Side Content */}
-      <div
-        style={{
-          flex: "1",
-          padding: "20px",
-          overflowY: "auto",
-          backgroundColor: "#f8f9fa",
-        }}
-      ></div>
     </div>
   );
 };
