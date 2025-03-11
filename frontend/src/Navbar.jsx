@@ -1,38 +1,35 @@
-const Navbar = () => {
+import React from "react";
+
+const Navbar = ({ onLogout }) => {
   return (
     <div
       style={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
-        width: "100%",
-        padding: "10px 20px",
+        justifyContent: "space-between", // Content ko left & right distribute karega
+        padding: "12px 20px",
         backgroundColor: "#9fb6c3",
         color: "white",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        height: "35px",
-        boxSizing: "border-box",
-        zIndex: 9000,
       }}
     >
+      {/* Logo / Title */}
       <h2 style={{ fontSize: "18px", fontWeight: "bold", margin: 0 }}>
         SDC STUDIO LLC
       </h2>
+
+      {/* Logout Button */}
       <button
+        onClick={onLogout}
         style={{
-          backgroundColor: "#008080",
+          backgroundColor: "#ff4d4d",
           color: "white",
-          borderRadius: "50%",  // Yehi sahi value hai
+          border: "none",
+          padding: "8px 12px",
+          borderRadius: "4px",
           cursor: "pointer",
-          width: "30px",        // Thoda bada size rakhenge to clear dikhega
-          height: "30px", 
-          border: "none",       // Extra border ko remove karein
         }}
-        onClick={() => alert("Logout Clicked")}  // Example functionality
       >
-        🚪
+        Logout
       </button>
     </div>
   );
