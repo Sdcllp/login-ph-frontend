@@ -33,16 +33,16 @@ const Navbar = ({ onLogout }) => {
       </div>
 
       {/* Logout Button */}
-      <button
+     button
         onClick={onLogout}
         style={{
           backgroundColor: "#ff4d4d",
           color: "white",
           border: "none",
-          padding: "8px 12px",
+          padding: "6px 10px", // Button height bhi adjust ki
           borderRadius: "4px",
           cursor: "pointer",
-          marginLeft: "75px", // Adjusted margin to move it left
+          minWidth: "75px",
         }}
       >
         Logout
