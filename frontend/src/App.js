@@ -22,7 +22,7 @@ const App = () => {
   };
 
   return (
-    <div style={{ width: "100vw", minHeight: "100vh", overflowX: "hidden" }}>
+    <div style={{ width: "100vw", minHeight: "100vh" }}> {/* Overflow removed */}
       {isAuthenticated ? (
         <>
           <Navbar onLogout={handleLogout} />
