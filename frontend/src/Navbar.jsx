@@ -28,8 +28,8 @@ const Navbar = () => {
           padding: "8px 12px",
           borderRadius: "4px",
           cursor: "pointer",
-          width: "50px",        
-         height: "50px", 
+          width: "20px",        
+         height: "20px", 
         }}
       >
         Logout
