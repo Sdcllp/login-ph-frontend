@@ -1,5 +1,3 @@
-import React from "react";
-
 const Navbar = ({ onLogout }) => {
   return (
     <div
@@ -16,6 +14,7 @@ const Navbar = ({ onLogout }) => {
         left: 0,
         zIndex: 1000,
         boxSizing: "border-box",
+        height: "50px", // FIXED: Define navbar height
       }}
     >
       {/* Logo / Title */}
