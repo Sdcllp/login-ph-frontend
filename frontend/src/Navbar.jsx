@@ -10,14 +10,15 @@ const Navbar = () => {
         backgroundColor: "#a0b8c8", // Navbar Background
         padding: "10px 20px",
         position: "fixed",
-        width: "100%",
+        width: "100%", // Ensure full width
         top: 0,
         left: 0,
         zIndex: 1000,
+        boxSizing: "border-box",
       }}
     >
       {/* Left Side - Branding */}
-      <h2 style={{ margin: 0, fontSize: "20px", color: "#fff" }}>STUDIO LLC</h2>
+      <h2 style={{ margin: 0, fontSize: "20px", color: "#fff", whiteSpace: "nowrap" }}>STUDIO LLC</h2>
 
       {/* Right Side - Logout Button */}
       <button
@@ -39,12 +40,10 @@ const Navbar = () => {
         {`
           @media (max-width: 768px) {
             div {
-              flex-direction: row;
-              justify-content: space-between;
-              padding: 10px;
+              padding: 8px 15px; /* Navbar padding adjust */
             }
             h2 {
-              font-size: 18px;
+              font-size: 16px; /* Reduce heading size */
             }
             button {
               font-size: 12px;
