@@ -37,61 +37,15 @@ const Sidebar = ({ setActiveContent }) => {
         { name: "General BIM Guidelines", path: "general-bim" },
       ],
     },
-    {
-      title: "Project Type 1",
-      key: "project-type-1",
-      path: "project-type-1",
-      items: [
-        { name: "Base file", path: "base-file" },
-        {
-          name: "Architecture Sheets",
-          path: "architecture-sheets",
-          subItems: [
-            {
-              name: "Floor Plans (Series A1.01)",
-              path: "floor-plans-series-a101",
-              subItems: [
-                { name: "Floor Plans", path: "floor-plans" },
-                { name: "RCP", path: "rcp" },
-                { name: "Equipment Plan", path: "equipment-plan" },
-              ],
-            },
-          ],
-        },
-        { name: "Elevations", path: "elevations" },
-        { name: "Sections", path: "sections" },
-        {
-          name: "Interior Elevations",
-          path: "interior-elevations",
-          subItems: [{ name: "Enlarge restrooms", path: "enlarge-restrooms" }],
-        },
-      ],
-    },
-    {
-      title: "Site Plan (series A0.01...)",
-      key: "site-plans-series-a101",
-      path: "site-plans-series-a101",
-      items: [
-        { name: "Site Plans", path: "site-plans" },
-        { name: "Site Details", path: "site-details" },
-        { name: "Fire Lane Plan", path: "fire-lane-plan" },
-      ],
-    },
-    {
-      title: "Fuel Drawing",
-      key: "fuel-drawing",
-      path: "fuel-drawing",
-      items: [{ name: "Piping Drawing", path: "piping-drawing" }],
-    },
   ];
 
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
-      {/* Sidebar Toggle Button (Visible only on small screens) */}
+    <div style={{ display: "flex" }}>
+      {/* Sidebar Toggle Button */}
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         style={{
-          position: "absolute",
+          position: "fixed",
           top: 10,
           left: 10,
           background: "transparent",
@@ -99,32 +53,29 @@ const Sidebar = ({ setActiveContent }) => {
           fontSize: "24px",
           cursor: "pointer",
           zIndex: 1000,
+          color: "white",
           display: isSidebarOpen ? "none" : "block", // Show only when sidebar is closed
         }}
       >
-        <FaBars color="white" />
+        <FaBars />
       </button>
 
       {/* Sidebar */}
       <div
         style={{
-        
-  width: "250px",  // Correct syntax
-  minHeight: "100vh",
-  backgroundColor: "#1a2b40",
-  position: "fixed",
-  left: isSidebarOpen ? "0" : "-250px", // Fix for toggle logic
-  top: "0",
-  transition: "left 0.3s ease",
-  padding: "20px",
-  boxSizing: "border-box",
-}}
+          width: isSidebarOpen ? "280px" : "0",
+          backgroundColor: "#1e293b",
+          color: "white",
+          height: "100vh",
+          overflowY: "auto",
+          transition: "width 0.3s",
+          paddingTop: isSidebarOpen ? "10px" : "0",
+          position: "fixed",
+          left: 0,
+          top: 0,
+          boxSizing: "border-box",
         }}
       >
-        {/* Close Button */}
-        
-          
-
         <h2
           style={{
             padding: "15px",
@@ -227,13 +178,13 @@ const Sidebar = ({ setActiveContent }) => {
       <div
         style={{
           flex: "1",
+          marginLeft: isSidebarOpen ? "280px" : "0",
           padding: "20px",
           overflowY: "auto",
           backgroundColor: "#f8f9fa",
+          transition: "margin-left 0.3s",
         }}
-      >
-        
-      </div>
+      ></div>
     </div>
   );
 };
