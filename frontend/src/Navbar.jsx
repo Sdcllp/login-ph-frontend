@@ -16,7 +16,7 @@ const Navbar = ({ onLogout }) => {
         padding: "12px 20px",
         backgroundColor: "#9fb6c3",
         color: "white",
-        width: "90%",
+        width: "100%",
         position: "relative",
       }}
     >
