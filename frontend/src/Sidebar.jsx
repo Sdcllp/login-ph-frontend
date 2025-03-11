@@ -84,7 +84,6 @@ const Sidebar = ({ setActiveContent }) => {
       items: [{ name: "Piping Drawing", path: "piping-drawing" }],
     },
   ];
-
   return (
     <div style={{ display: "flex" }}>
       {/* Sidebar Toggle Button */}
