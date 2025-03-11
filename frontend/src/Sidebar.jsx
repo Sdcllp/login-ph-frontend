@@ -17,7 +17,7 @@ const Sidebar = ({ setActiveContent }) => {
     setActiveContent(path);
   };
 
- const sections = [{ name: "PH Studio", path: "phstudio" }];
+  const sections = [{ name: "PH Studio", path: "phstudio" }];
 
   const collapsibleSections = [
     {
@@ -118,7 +118,7 @@ const Sidebar = ({ setActiveContent }) => {
           paddingTop: isSidebarOpen ? "10px" : "0",
           position: "fixed",
           left: 0,
-          top: 0,
+          top: "50px", // Adjusted to match navbar height
           boxSizing: "border-box",
         }}
       >
@@ -148,79 +148,9 @@ const Sidebar = ({ setActiveContent }) => {
             {section.name}
           </div>
         ))}
-
-        {collapsibleSections.map((section) => (
-          <div key={section.key}>
-            <div
-              onClick={() => toggleSection(section.key, section.path)}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                padding: "12px",
-                cursor: "pointer",
-              }}
-            >
-              {openSections[section.key] ? (
-                <FaChevronDown style={{ marginRight: "10px" }} />
-              ) : (
-                <FaChevronRight style={{ marginRight: "10px" }} />
-              )}
-              {section.title}
-            </div>
-
-            {openSections[section.key] && section.items && (
-              <div style={{ backgroundColor: "#273649", paddingLeft: "20px" }}>
-                {section.items.map((item) => (
-                  <div key={item.path}>
-                    <div
-                      onClick={() => {
-                        if (item.subItems) {
-                          toggleSection(item.path, item.path);
-                        } else {
-                          handleItemClick(item.path);
-                        }
-                      }}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        padding: "10px 20px",
-                        cursor: "pointer",
-                      }}
-                    >
-                      {openSections[item.path] ? (
-                        <FaChevronDown style={{ marginRight: "10px" }} />
-                      ) : (
-                        <FaChevronRight style={{ marginRight: "10px" }} />
-                      )}
-                      {item.name}
-                    </div>
-                    {item.subItems && openSections[item.path] && (
-                      <div style={{ paddingLeft: "20px" }}>
-                        {item.subItems.map((subItem) => (
-                          <div
-                            key={subItem.path}
-                            onClick={() => handleItemClick(subItem.path)}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              padding: "8px 20px",
-                              cursor: "pointer",
-                            }}
-                          >
-                            {subItem.name}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
       </div>
 
-      {/* Right Side Content */}
+      {/* Right Side Content (Fixed Overlap) */}
       <div
         style={{
           flex: "1",
@@ -229,6 +159,7 @@ const Sidebar = ({ setActiveContent }) => {
           overflowY: "auto",
           backgroundColor: "#f8f9fa",
           transition: "margin-left 0.3s",
+          marginTop: "50px", // FIXED: Push content below navbar
         }}
       ></div>
     </div>
