@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { FaChevronRight, FaChevronDown, FaBars } from "react-icons/fa"; 
+import { FaChevronRight, FaChevronDown } from "react-icons/fa"; // Import chevron icons
 
 const Sidebar = ({ setActiveContent }) => {
   const [openSections, setOpenSections] = useState({});
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  const toggleSection = (section) => {
+  const toggleSection = (section, path) => {
     setOpenSections((prev) => ({
       ...prev,
       [section]: !prev[section],
     }));
+    if (path) setActiveContent(path);
   };
 
   const handleItemClick = (path) => {
@@ -22,6 +22,7 @@ const Sidebar = ({ setActiveContent }) => {
     {
       title: "Overview",
       key: "overview",
+      path: "overview",
       items: [
         { name: "General Technical Guidelines", path: "general-technical" },
         {
@@ -38,6 +39,7 @@ const Sidebar = ({ setActiveContent }) => {
     {
       title: "Project Type 1",
       key: "project-type-1",
+      path: "project-type-1",
       items: [
         { name: "Base file", path: "base-file" },
         {
@@ -64,132 +66,128 @@ const Sidebar = ({ setActiveContent }) => {
         },
       ],
     },
+    {
+      title: "Site Plan (series A0.01...)",
+      key: "site-plans-series-a101",
+      path: "site-plans-series-a101",
+      items: [
+        { name: "Site Plans", path: "site-plans" },
+        { name: "Site Details", path: "site-details" },
+        { name: "Fire Lane Plan", path: "fire-lane-plan" },
+      ],
+    },
+
+    {
+      title: "Fuel Drawing",
+      key: "fuel-drawing",
+      path: "fuel-drawing", // YEH LINE ADD KARO
+      items: [{ name: "Piping Drawing", path: "piping-drawing" }],
+    },
   ];
 
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
-      {/* Sidebar Toggle Button */}
-      {!isSidebarOpen && (
-        <button
-          onClick={() => setIsSidebarOpen(true)}
-          style={{
-            position: "absolute",
-            top: 10,
-            left: 10,
-            background: "transparent",
-            border: "none",
-            fontSize: "24px",
-            cursor: "pointer",
-            zIndex: 1001,
-          }}
-        >
-          <FaBars color="white" />
-        </button>
-      )}
-
-      {/* Sidebar */}
-      <div
+    <div
+      style={{
+        width: "280px",
+        backgroundColor: "#1e293b",
+        color: "white",
+        height: "100vh",
+        overflowY: "auto",
+        paddingTop: "10px",
+      }}
+    >
+      <h2
         style={{
-          width: isSidebarOpen ? "280px" : "0",
-          backgroundColor: "#1e293b",
-          color: "white",
-          height: "100vh",
-          overflowY: "auto",
-          transition: "width 0.3s",
-          paddingTop: isSidebarOpen ? "10px" : "0",
-          whiteSpace: "nowrap",
+          padding: "15px",
+          textAlign: "center",
+          backgroundColor: "#334155",
+          fontSize: "18px",
+          fontWeight: "bold",
         }}
       >
-        {/* Close Button */}
-        {isSidebarOpen && (
-          <button
-            onClick={() => setIsSidebarOpen(false)}
-            style={{
-              background: "transparent",
-              border: "none",
-              color: "white",
-              fontSize: "24px",
-              position: "absolute",
-              top: 10,
-              right: 10,
-              cursor: "pointer",
-              zIndex: 1001,
-            }}
-          >
-            ✖
-          </button>
-        )}
+        CONTENTS
+      </h2>
 
-        <h2
+      {sections.map((section) => (
+        <div
+          key={section.path}
+          onClick={() => handleItemClick(section.path)}
           style={{
-            padding: "15px",
-            textAlign: "center",
-            backgroundColor: "#334155",
-            fontSize: "18px",
-            fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+            padding: "12px",
+            cursor: "pointer",
+            backgroundColor: "",
+            transition: "background 0.3s",
           }}
+          onMouseEnter={(e) => (e.target.style.backgroundColor = "#55677d")}
+          onMouseLeave={(e) => (e.target.style.backgroundColor = "")}
         >
-          CONTENTS
-        </h2>
+          {section.name}
+        </div>
+      ))}
 
-        {sections.map((section) => (
+      {collapsibleSections.map((section) => (
+        <div key={section.key}>
           <div
-            key={section.path}
-            onClick={() => handleItemClick(section.path)}
+            onClick={() => toggleSection(section.key, section.path)}
             style={{
               display: "flex",
               alignItems: "center",
               padding: "12px",
               cursor: "pointer",
+              backgroundColor: "",
+              transition: "background 0.3s",
             }}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = "#55677d")}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = "")}
           >
-            {section.name}
+            {openSections[section.key] ? (
+              <FaChevronDown style={{ marginRight: "10px" }} />
+            ) : (
+              <FaChevronRight style={{ marginRight: "10px" }} />
+            )}
+            {section.title}
           </div>
-        ))}
 
-        {collapsibleSections.map((section) => (
-          <div key={section.key}>
-            <div
-              onClick={() => toggleSection(section.key)}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                padding: "12px",
-                cursor: "pointer",
-              }}
-            >
-              {openSections[section.key] ? (
-                <FaChevronDown style={{ marginRight: "10px" }} />
-              ) : (
-                <FaChevronRight style={{ marginRight: "10px" }} />
-              )}
-              {section.title}
-            </div>
-
-            {openSections[section.key] && section.items && (
-              <div style={{ backgroundColor: "#273649", paddingLeft: "20px" }}>
-                {section.items.map((item) => (
-                  <div key={item.path}>
-                    <div
-                      onClick={() =>
-                        item.subItems ? toggleSection(item.path) : handleItemClick(item.path)
+          {openSections[section.key] && section.items && (
+            <div style={{ backgroundColor: "#273649", paddingLeft: "20px" }}>
+              {section.items.map((item) => (
+                <div key={item.path}>
+                  <div
+                    onClick={() => {
+                      if (item.subItems) {
+                        toggleSection(item.path, item.path);
+                      } else {
+                        handleItemClick(item.path);
                       }
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        padding: "10px 20px",
-                        cursor: "pointer",
-                      }}
-                    >
-                      {item.subItems && (openSections[item.path] ? <FaChevronDown /> : <FaChevronRight />)}
-                      {item.name}
-                    </div>
-                    {item.subItems && openSections[item.path] && (
-                      <div style={{ paddingLeft: "20px" }}>
-                        {item.subItems.map((subItem) => (
+                    }}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      padding: "10px 20px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {openSections[item.path] ? (
+                      <FaChevronDown style={{ marginRight: "10px" }} />
+                    ) : (
+                      <FaChevronRight style={{ marginRight: "10px" }} />
+                    )}
+                    {item.name}
+                  </div>
+                  {item.subItems && openSections[item.path] && (
+                    <div style={{ paddingLeft: "20px" }}>
+                      {item.subItems.map((subItem) => (
+                        <div key={subItem.path}>
                           <div
-                            key={subItem.path}
-                            onClick={() => handleItemClick(subItem.path)}
+                            onClick={() => {
+                              if (subItem.subItems) {
+                                toggleSection(subItem.path, subItem.path);
+                              } else {
+                                handleItemClick(subItem.path);
+                              }
+                            }}
                             style={{
                               display: "flex",
                               alignItems: "center",
@@ -197,18 +195,43 @@ const Sidebar = ({ setActiveContent }) => {
                               cursor: "pointer",
                             }}
                           >
+                            {openSections[subItem.path] ? (
+                              <FaChevronDown style={{ marginRight: "10px" }} />
+                            ) : (
+                              <FaChevronRight style={{ marginRight: "10px" }} />
+                            )}
                             {subItem.name}
                           </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+                          {subItem.subItems && openSections[subItem.path] && (
+                            <div style={{ paddingLeft: "30px" }}>
+                              {subItem.subItems.map((deepSubItem) => (
+                                <div
+                                  key={deepSubItem.path}
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    padding: "8px 20px",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() =>
+                                    handleItemClick(deepSubItem.path)
+                                  }
+                                >
+                                  {deepSubItem.name}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
     </div>
   );
 };
