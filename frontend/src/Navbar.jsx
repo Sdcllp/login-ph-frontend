@@ -1,53 +1,63 @@
 import React from "react";
 
-const Navbar = () => {
+const Navbar = ({ onLogout }) => {
   return (
     <div
       style={{
         display: "flex",
-        justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: "#a0b8c8", // Navbar Background
-        padding: "10px 20px",
-        position: "fixed",
-        width: "100%", // Ensure full width
+        justifyContent: "space-between",
+        padding: "12px 20px",
+        backgroundColor: "#9fb6c3",
+        color: "white",
+        width: "100%", // Full width
+        position: "fixed", // Fixed on top
         top: 0,
         left: 0,
         zIndex: 1000,
         boxSizing: "border-box",
       }}
     >
-      {/* Left Side - Branding */}
-      <h2 style={{ margin: 0, fontSize: "20px", color: "#fff", whiteSpace: "nowrap" }}>STUDIO LLC</h2>
-
-      {/* Right Side - Logout Button */}
-      <button
+      {/* Logo / Title */}
+      <h2
         style={{
-          backgroundColor: "red",
+          fontSize: "18px",
+          fontWeight: "bold",
+          margin: 0,
+          whiteSpace: "nowrap", // Prevents breaking
+        }}
+      >
+        SDC STUDIO LLC
+      </h2>
+
+      {/* Logout Button */}
+      <button
+        onClick={onLogout}
+        style={{
+          backgroundColor: "#ff4d4d",
           color: "white",
           border: "none",
-          padding: "8px 15px",
+          padding: "8px 12px",
+          borderRadius: "4px",
           cursor: "pointer",
-          borderRadius: "5px",
-          fontSize: "14px",
         }}
       >
         Logout
       </button>
 
-      {/* Mobile Responsive CSS */}
+      {/* Responsive CSS */}
       <style>
         {`
           @media (max-width: 768px) {
             div {
-              padding: 8px 15px; /* Navbar padding adjust */
+              padding: 10px 15px;
             }
             h2 {
-              font-size: 16px; /* Reduce heading size */
+              font-size: 16px; /* Reduce title size */
             }
             button {
               font-size: 12px;
-              padding: 5px 10px;
+              padding: 6px 10px;
             }
           }
         `}
