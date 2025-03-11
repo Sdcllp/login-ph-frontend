@@ -119,22 +119,8 @@ const Sidebar = ({ setActiveContent }) => {
         }}
       >
         {/* Close Button */}
-        <button
-          onClick={() => setIsSidebarOpen(false)}
-          style={{
-            display: isSidebarOpen ? "block" : "none",
-            background: "transparent",
-            border: "none",
-            color: "white",
-            fontSize: "24px",
-            position: "absolute",
-            top: 10,
-            right: 10,
-            cursor: "pointer",
-          }}
-        >
-          ✖
-        </button>
+        
+          
 
         <h2
           style={{
