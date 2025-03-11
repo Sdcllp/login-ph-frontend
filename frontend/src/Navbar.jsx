@@ -13,12 +13,12 @@ const Navbar = ({ onLogout }) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        flexWrap: "wrap",  // Ensures content doesn't overflow
+        flexWrap: "nowrap", // Prevents items from breaking lines
         padding: "12px 20px",
         backgroundColor: "#9fb6c3",
         color: "white",
-        width: "100%",       // Correct width setting
-        maxWidth: "100%",    // Prevents overflow issues
+        width: "100%",    // Correct width for full navbar
+        maxWidth: "100%", // Prevents overflow issues
         boxSizing: "border-box",
       }}
     >
