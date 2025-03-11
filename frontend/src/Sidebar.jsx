@@ -85,76 +85,157 @@ const Sidebar = ({ setActiveContent }) => {
   ];
 
   return (
-    <div style={{ display: "flex", height: "100vh", overflow: "hidden" }}>
-      {/* Sidebar */}
-      <div
+    <div
+      style={{
+        width: "280px",
+        backgroundColor: "#1e293b",
+        color: "white",
+        height: "100vh",
+        overflowY: "auto",
+        paddingTop: "10px",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        zIndex: 1000,
+        boxSizing: "border-box",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <h2
         style={{
-          width: "280px",
-          minWidth: "280px",
-          backgroundColor: "#1e293b",
-          color: "white",
-          height: "100vh",
-          overflowY: "auto",
+          padding: "15px",
+          textAlign: "center",
+          backgroundColor: "#334155",
+          fontSize: "18px",
+          fontWeight: "bold",
         }}
       >
-        <h2
-          style={{
-            padding: "15px",
-            textAlign: "center",
-            backgroundColor: "#334155",
-            fontSize: "18px",
-            fontWeight: "bold",
-          }}
-        >
-          CONTENTS
-        </h2>
+        CONTENTS
+      </h2>
 
-        <div onClick={() => handleItemClick("phstudio")} style={{ padding: "12px", cursor: "pointer" }}>
-          PH Studio
-        </div>
-      </div>
-
-      {/* Right Side Content */}
-      <div
-        style={{
-          flex: 1,
-          padding: "20px",
-          backgroundColor: "#f8f9fa",
-          overflowY: "auto",
-        }}
-      >
+      {sections.map((section) => (
         <div
+          key={section.path}
+          onClick={() => handleItemClick(section.path)}
           style={{
-            backgroundColor: "#a8bac3",
-            padding: "10px",
             display: "flex",
-            justifyContent: "space-between",
             alignItems: "center",
+            padding: "12px",
+            cursor: "pointer",
+            transition: "background 0.3s",
           }}
+          onMouseEnter={(e) => (e.target.style.backgroundColor = "#55677d")}
+          onMouseLeave={(e) => (e.target.style.backgroundColor = "")}
         >
-          <h3 style={{ margin: 0 }}>Your Page Title</h3>
-          <button
-            style={{
-              backgroundColor: "red",
-              color: "white",
-              border: "none",
-              padding: "10px",
-              cursor: "pointer",
-              borderRadius: "5px",
-            }}
-          >
-            Logout
-          </button>
+          {section.name}
         </div>
+      ))}
 
-        {/* Your Main Content */}
-        <div style={{ marginTop: "20px", textAlign: "justify", padding: "20px", backgroundColor: "white" }}>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s...
-          </p>
+      {collapsibleSections.map((section) => (
+        <div key={section.key}>
+          <div
+            onClick={() => toggleSection(section.key, section.path)}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              padding: "12px",
+              cursor: "pointer",
+              transition: "background 0.3s",
+            }}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = "#55677d")}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = "")}
+          >
+            {openSections[section.key] ? (
+              <FaChevronDown style={{ marginRight: "10px" }} />
+            ) : (
+              <FaChevronRight style={{ marginRight: "10px" }} />
+            )}
+            {section.title}
+          </div>
+
+          {openSections[section.key] && section.items && (
+            <div style={{ backgroundColor: "#273649", paddingLeft: "20px" }}>
+              {section.items.map((item) => (
+                <div key={item.path}>
+                  <div
+                    onClick={() => {
+                      if (item.subItems) {
+                        toggleSection(item.path, item.path);
+                      } else {
+                        handleItemClick(item.path);
+                      }
+                    }}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      padding: "10px 20px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {openSections[item.path] ? (
+                      <FaChevronDown style={{ marginRight: "10px" }} />
+                    ) : (
+                      <FaChevronRight style={{ marginRight: "10px" }} />
+                    )}
+                    {item.name}
+                  </div>
+                  {item.subItems && openSections[item.path] && (
+                    <div style={{ paddingLeft: "20px" }}>
+                      {item.subItems.map((subItem) => (
+                        <div key={subItem.path}>
+                          <div
+                            onClick={() => {
+                              if (subItem.subItems) {
+                                toggleSection(subItem.path, subItem.path);
+                              } else {
+                                handleItemClick(subItem.path);
+                              }
+                            }}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              padding: "8px 20px",
+                              cursor: "pointer",
+                            }}
+                          >
+                            {openSections[subItem.path] ? (
+                              <FaChevronDown style={{ marginRight: "10px" }} />
+                            ) : (
+                              <FaChevronRight style={{ marginRight: "10px" }} />
+                            )}
+                            {subItem.name}
+                          </div>
+                          {subItem.subItems && openSections[subItem.path] && (
+                            <div style={{ paddingLeft: "30px" }}>
+                              {subItem.subItems.map((deepSubItem) => (
+                                <div
+                                  key={deepSubItem.path}
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    padding: "8px 20px",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() =>
+                                    handleItemClick(deepSubItem.path)
+                                  }
+                                >
+                                  {deepSubItem.name}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
-      </div>
+      ))}
     </div>
   );
 };
