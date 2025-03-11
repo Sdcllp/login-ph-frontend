@@ -6,14 +6,13 @@ import Navbar from "./Navbar";
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Check authentication on load
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsAuthenticated(!!token);
   }, []);
 
   const handleLogin = () => {
-    localStorage.setItem("token", "dummy_token"); // Fake token for testing
+    localStorage.setItem("token", "dummy_token");
     setIsAuthenticated(true);
   };
 
@@ -22,13 +21,17 @@ const App = () => {
     setIsAuthenticated(false);
   };
 
-  return isAuthenticated ? (
-    <>
-      <Navbar onLogout={handleLogout} /> {/* ✅ Navbar me logout pass kiya */}
-      <EmployeeLayout />
-    </>
-  ) : (
-    <Login onLogin={handleLogin} />
+  return (
+    <div style={{ width: "100vw", minHeight: "100vh", overflowX: "hidden" }}>
+      {isAuthenticated ? (
+        <>
+          <Navbar onLogout={handleLogout} />
+          <EmployeeLayout />
+        </>
+      ) : (
+        <Login onLogin={handleLogin} />
+      )}
+    </div>
   );
 };
 
