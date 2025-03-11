@@ -60,7 +60,7 @@ const Navbar = ({ onLogout }) => {
       <button
   onClick={onLogout}
   style={{
-    backgroundColor: "#ff4d4d",
+    backgroundColor: "#008080",
     color: "white",
     border: "none",
     padding: "8px 20px", // Adjust padding for better shape
