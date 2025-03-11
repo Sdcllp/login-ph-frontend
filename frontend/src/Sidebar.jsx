@@ -80,7 +80,7 @@ const Sidebar = ({ setActiveContent }) => {
     {
       title: "Fuel Drawing",
       key: "fuel-drawing",
-      path: "fuel-drawing", // YEH LINE ADD KARO
+      path: "fuel-drawing",
       items: [{ name: "Piping Drawing", path: "piping-drawing" }],
     },
   ];
@@ -94,6 +94,12 @@ const Sidebar = ({ setActiveContent }) => {
         height: "100vh",
         overflowY: "auto",
         paddingTop: "10px",
+        position: "fixed", // Fixed position for mobile responsiveness
+        left: 0,
+        top: 0,
+        bottom: 0,
+        zIndex: 1000,
+        transition: "transform 0.3s ease-in-out",
       }}
     >
       <h2
@@ -117,7 +123,6 @@ const Sidebar = ({ setActiveContent }) => {
             alignItems: "center",
             padding: "12px",
             cursor: "pointer",
-            backgroundColor: "",
             transition: "background 0.3s",
           }}
           onMouseEnter={(e) => (e.target.style.backgroundColor = "#55677d")}
@@ -136,7 +141,6 @@ const Sidebar = ({ setActiveContent }) => {
               alignItems: "center",
               padding: "12px",
               cursor: "pointer",
-              backgroundColor: "",
               transition: "background 0.3s",
             }}
             onMouseEnter={(e) => (e.target.style.backgroundColor = "#55677d")}
