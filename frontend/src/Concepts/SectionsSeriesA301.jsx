@@ -1,13 +1,13 @@
 import React from "react";
 
-const EnlargeRestrooms = () => {
+const SectionsSeriesA301 = () => {
   return (
     <div style={{ padding: "20px", fontFamily: "Calibri, sans-serif" }}>
       <h1 style={{ fontSize: "24px", fontWeight: "bold" }}>
-        Enlarge Restrooms
+        Sections Series A3.01
       </h1>
     </div>
   );
 };
 
-export default EnlargeRestrooms;
+export default SectionsSeriesA301;

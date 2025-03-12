@@ -13,9 +13,8 @@ import ArchitectureSheets from "./Concepts/ArchitectureSheets";
 import RCP from "./Concepts/RCP";
 import EquipmentPlan from "./Concepts/EquipmentPlan";
 import ElevationsSeriesA201 from "./Concepts/ElevationsSeriesA201";
-
-import Sections from "./Concepts/Sections";
-import InteriorElevations from "./Concepts/InteriorElevations";
+import SectionsSeriesA301 from "./Concepts/SectionsSeriesA301";
+import InteriorElevationsSeriesA401 from "./Concepts/InteriorElevationsSeriesA401";
 import EnlargeRestrooms from "./Concepts/EnlargeRestrooms";
 import FuelDrawing from "./Concepts/FuelDrawing";
 import PipingDrawing from "./Concepts/PipingDrawing";
@@ -30,6 +29,7 @@ import X_Survey from "./Concepts/X_Survey";
 import CodeSheetSeriesG001 from "./Concepts/CodeSheetSeriesG001 ";
 import G001GenSheetIndex from "./Concepts/G001GenSheetIndex";
 import G002GenNotesSheet from "./Concepts/G002GenNotesSheet";
+import ComCheck from "./Concepts/ComCheck";
 
 const EmployeeLayout = () => {
   const [activeContent, setActiveContent] = useState(null);
@@ -64,10 +64,11 @@ const EmployeeLayout = () => {
         return <EquipmentPlan />;
       case "elevations-series-a201":
         return <ElevationsSeriesA201 />;
-      case "sections":
-        return <Sections />;
-      case "interior-elevations":
-        return <InteriorElevations />;
+      case "sections-series-a301":
+        return <SectionsSeriesA301 />;
+      case "interior-elevations-series-a401":
+        return <InteriorElevationsSeriesA401 />;
+
       case "enlarge-restrooms":
         return <EnlargeRestrooms />;
       case "site-plans-series-a101":
@@ -94,6 +95,8 @@ const EmployeeLayout = () => {
         return <G001GenSheetIndex />;
       case "g002-gen-notes-sheet":
         return <G002GenNotesSheet />;
+      case "com-check":
+        return <ComCheck />;
 
       default:
         return (
