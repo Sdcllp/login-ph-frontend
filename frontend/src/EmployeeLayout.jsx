@@ -10,20 +10,26 @@ import FileNaming from "./Concepts/FileNaming";
 import ProjectType1 from "./Concepts/ProjectType1";
 import BaseFile from "./Concepts/BaseFile";
 import ArchitectureSheets from "./Concepts/ArchitectureSheets";
-import FloorPlans from "./Concepts/FloorPlans";
 import RCP from "./Concepts/RCP";
 import EquipmentPlan from "./Concepts/EquipmentPlan";
-import Elevations from "./Concepts/Elevations";
+import ElevationsSeriesA201 from "./Concepts/ElevationsSeriesA201";
+
 import Sections from "./Concepts/Sections";
 import InteriorElevations from "./Concepts/InteriorElevations";
 import EnlargeRestrooms from "./Concepts/EnlargeRestrooms";
 import FuelDrawing from "./Concepts/FuelDrawing";
 import PipingDrawing from "./Concepts/PipingDrawing";
-import FloorPlansSeriesA101 from "./Concepts/FloorPlansSeriesA101";
+import FloorPlansSheetSeriesA101 from "./Concepts/FloorPlansSheetSeriesA101";
 import SitePlanSeriesA001 from "./Concepts/SitePlanSeriesA001";
 import SitePlans from "./Concepts/SitePlans";
 import SiteDetails from "./Concepts/SiteDetails";
 import FireLanePlan from "./Concepts/FireLanePlan";
+import XFloorPlan from "./Concepts/XFloorPlan";
+import X_SitePlan from "./Concepts/X_SitePlan";
+import X_Survey from "./Concepts/X_Survey";
+import CodeSheetSeriesG001 from "./Concepts/CodeSheetSeriesG001 ";
+import G001GenSheetIndex from "./Concepts/G001GenSheetIndex";
+import G002GenNotesSheet from "./Concepts/G002GenNotesSheet";
 
 const EmployeeLayout = () => {
   const [activeContent, setActiveContent] = useState(null);
@@ -50,16 +56,14 @@ const EmployeeLayout = () => {
         return <BaseFile />;
       case "architecture-sheets":
         return <ArchitectureSheets />;
-      case "floor-plans-series-a101":
-        return <FloorPlansSeriesA101 />;
-      case "floor-plans":
-        return <FloorPlans />;
+      case "floor-plans-sheet-series-a101":
+        return <FloorPlansSheetSeriesA101 />;
       case "rcp":
         return <RCP />;
       case "equipment-plan":
         return <EquipmentPlan />;
-      case "elevations":
-        return <Elevations />;
+      case "elevations-series-a201":
+        return <ElevationsSeriesA201 />;
       case "sections":
         return <Sections />;
       case "interior-elevations":
@@ -78,6 +82,19 @@ const EmployeeLayout = () => {
         return <FuelDrawing />;
       case "piping-drawing":
         return <PipingDrawing />;
+      case "x-floor-plans":
+        return <XFloorPlan />;
+      case "x-site-plan":
+        return <X_SitePlan />;
+      case "x-survey":
+        return <X_Survey />;
+      case "code-sheet-series-g001":
+        return <CodeSheetSeriesG001 />;
+      case "g001-gen-sheet-index":
+        return <G001GenSheetIndex />;
+      case "g002-gen-notes-sheet":
+        return <G002GenNotesSheet />;
+
       default:
         return (
           <div

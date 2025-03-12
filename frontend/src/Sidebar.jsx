@@ -3,7 +3,11 @@ import { FaChevronRight, FaChevronDown, FaBars } from "react-icons/fa"; // Impor
 
 const Sidebar = ({ setActiveContent }) => {
   const [openSections, setOpenSections] = useState({});
+<<<<<<< HEAD
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar toggle state
+=======
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+>>>>>>> 39b0d12 (add new thing)
 
   const toggleSection = (section, path) => {
     setOpenSections((prev) => ({
@@ -42,20 +46,13 @@ const Sidebar = ({ setActiveContent }) => {
       key: "project-type-1",
       path: "project-type-1",
       items: [
-        { name: "Base file", path: "base-file" },
         {
-          name: "Architecture Sheets",
-          path: "architecture-sheets",
+          name: "Base File",
+          path: "base-file",
           subItems: [
-            {
-              name: "Floor Plans (Series A1.01)",
-              path: "floor-plans-series-a101",
-              subItems: [
-                { name: "Floor Plans", path: "floor-plans" },
-                { name: "RCP", path: "rcp" },
-                { name: "Equipment Plan", path: "equipment-plan" },
-              ],
-            },
+            { name: "X_Floor Plan", path: "x-floor-plan" },
+            { name: "X_Site Plan", path: "x-site-plan" },
+            { name: "X_Survey", path: "x-survey" },
           ],
         },
         { name: "Elevations", path: "elevations" },
@@ -63,31 +60,73 @@ const Sidebar = ({ setActiveContent }) => {
         {
           name: "Interior Elevations",
           path: "interior-elevations",
-          subItems: [{ name: "Enlarge restrooms", path: "enlarge-restrooms" }],
+          subItems: [{ name: "Enlarge Restrooms", path: "enlarge-restrooms" }],
         },
       ],
     },
     {
-      title: "Site Plan (series A0.01...)",
-      key: "site-plans-series-a101",
-      path: "site-plans-series-a101",
+      title: "Architecture Sheets",
+      key: "architecture-sheets",
+      path: "architecture-sheets",
       items: [
-        { name: "Site Plans", path: "site-plans" },
-        { name: "Site Details", path: "site-details" },
-        { name: "Fire Lane Plan", path: "fire-lane-plan" },
+        {
+          name: "Site Plan (Series A0.01...)",
+          path: "site-plans-series-a101",
+          subItems: [
+            { name: "Site Plans", path: "site-plans" },
+            { name: "Site Details", path: "site-details" },
+            { name: "Fire Lane Plan", path: "fire-lane-plan" },
+          ],
+        },
+        {
+          name: "Code Sheet (Series G0.01...)",
+          path: "code-sheet-series-g001",
+          subItems: [
+            { name: "G0.01 Gen Sheet Index", path: "g001-gen-sheet-index" },
+            { name: "G0.02 Gen Notes Sheet", path: "g002-gen-notes-sheet" },
+          ],
+        },
+        {
+          name: "Floor Plans (Sheet Series A1.01)",
+          path: "floor-plans-sheet-series-a101",
+          subItems: [
+            { name: "X_Floor Plans", path: "x-floor-plans" },
+            { name: "RCP", path: "rcp" },
+            { name: "Equipment Plan", path: "equipment-plan" },
+          ],
+        },
+        { name: "ElevationsSeriesA201", path: "elevations-series-a201" },
+        { name: "Sections", path: "sections" },
+        {
+          name: "Interior Elevations",
+          path: "interior-elevations",
+          subItems: [{ name: "Enlarge Restrooms", path: "enlarge-restrooms" }],
+        },
       ],
     },
     {
       title: "Fuel Drawing",
       key: "fuel-drawing",
       path: "fuel-drawing",
+<<<<<<< HEAD
       items: [{ name: "Piping Drawing", path: "piping-drawing" }],
+=======
+      items: [
+        { name: "Piping Drawing", path: "piping-drawing" },
+        { name: "Com Check", path: "com-check" },
+      ],
+>>>>>>> 39b0d12 (add new thing)
     },
   ];
 
   return (
+<<<<<<< HEAD
     <div style={{ display: "flex", height: "100vh" }}>
       {/* Sidebar Toggle Button (Visible only on small screens) */}
+=======
+    <div style={{ display: "flex", minHeight: "100vh" }}>
+      {/* Sidebar Toggle Button */}
+>>>>>>> 39b0d12 (add new thing)
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         style={{
@@ -99,7 +138,11 @@ const Sidebar = ({ setActiveContent }) => {
           fontSize: "24px",
           cursor: "pointer",
           zIndex: 1000,
+<<<<<<< HEAD
           display: isSidebarOpen ? "none" : "block", // Show only when sidebar is closed
+=======
+          display: isSidebarOpen ? "none" : "block",
+>>>>>>> 39b0d12 (add new thing)
         }}
       >
         <FaBars color="white" />
@@ -111,15 +154,24 @@ const Sidebar = ({ setActiveContent }) => {
           width: isSidebarOpen ? "280px" : "0",
           backgroundColor: "#1e293b",
           color: "white",
+<<<<<<< HEAD
           height: "100vh",
           overflowY: "auto",
+=======
+          minHeight: "100vh", // ✅ Full height fix
+          height: "100%", // ✅ Ensures auto-expansion if content grows
+          overflowY: "auto", // ✅ Enables scrolling for long content
+>>>>>>> 39b0d12 (add new thing)
           transition: "width 0.3s",
           paddingTop: isSidebarOpen ? "10px" : "0",
           whiteSpace: "nowrap",
         }}
       >
+<<<<<<< HEAD
         {/* Close Button */}
 
+=======
+>>>>>>> 39b0d12 (add new thing)
         <h2
           style={{
             padding: "15px",
@@ -221,7 +273,11 @@ const Sidebar = ({ setActiveContent }) => {
       {/* Right Side Content */}
       <div
         style={{
+<<<<<<< HEAD
           flex: "1",
+=======
+          flex: "1", // ✅ Ensures this section takes remaining space
+>>>>>>> 39b0d12 (add new thing)
           padding: "20px",
           overflowY: "auto",
           backgroundColor: "#f8f9fa",

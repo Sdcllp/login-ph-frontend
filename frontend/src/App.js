@@ -22,13 +22,17 @@ const App = () => {
     setIsAuthenticated(false);
   };
 
-  return isAuthenticated ? (
-    <>
-      <Navbar onLogout={handleLogout} /> {/* ✅ Navbar me logout pass kiya */}
-      <EmployeeLayout />
-    </>
-  ) : (
-    <Login onLogin={handleLogin} />
+  return (
+    <div style={{ fontFamily: "Calibri, sans-serif" }}> {/* ✅ Applied Calibri font */}
+      {isAuthenticated ? (
+        <>
+          <Navbar onLogout={handleLogout} />
+          <EmployeeLayout />
+        </>
+      ) : (
+        <Login onLogin={handleLogin} />
+      )}
+    </div>
   );
 };
 

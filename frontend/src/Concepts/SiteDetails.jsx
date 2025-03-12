@@ -1,7 +1,10 @@
-import React from "react";
-
 const SiteDetails = () => {
-  return <div>SiteDetails</div>;
+  return (
+    <div style={{ padding: "20px" }}>
+      <h2>Site Details</h2>
+      <p>M.</p>
+    </div>
+  );
 };
 
 export default SiteDetails;
