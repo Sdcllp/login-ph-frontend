@@ -3,11 +3,8 @@ import { FaChevronRight, FaChevronDown, FaBars } from "react-icons/fa"; // Impor
 
 const Sidebar = ({ setActiveContent }) => {
   const [openSections, setOpenSections] = useState({});
-<<<<<<< HEAD
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar toggle state
-=======
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
->>>>>>> 39b0d12 (add new thing)
 
   const toggleSection = (section, path) => {
     setOpenSections((prev) => ({
@@ -108,25 +105,18 @@ const Sidebar = ({ setActiveContent }) => {
       title: "Fuel Drawing",
       key: "fuel-drawing",
       path: "fuel-drawing",
-<<<<<<< HEAD
-      items: [{ name: "Piping Drawing", path: "piping-drawing" }],
-=======
+
       items: [
         { name: "Piping Drawing", path: "piping-drawing" },
         { name: "Com Check", path: "com-check" },
       ],
->>>>>>> 39b0d12 (add new thing)
     },
   ];
 
   return (
-<<<<<<< HEAD
     <div style={{ display: "flex", height: "100vh" }}>
       {/* Sidebar Toggle Button (Visible only on small screens) */}
-=======
-    <div style={{ display: "flex", minHeight: "100vh" }}>
-      {/* Sidebar Toggle Button */}
->>>>>>> 39b0d12 (add new thing)
+
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         style={{
@@ -138,11 +128,8 @@ const Sidebar = ({ setActiveContent }) => {
           fontSize: "24px",
           cursor: "pointer",
           zIndex: 1000,
-<<<<<<< HEAD
+
           display: isSidebarOpen ? "none" : "block", // Show only when sidebar is closed
-=======
-          display: isSidebarOpen ? "none" : "block",
->>>>>>> 39b0d12 (add new thing)
         }}
       >
         <FaBars color="white" />
@@ -154,24 +141,20 @@ const Sidebar = ({ setActiveContent }) => {
           width: isSidebarOpen ? "280px" : "0",
           backgroundColor: "#1e293b",
           color: "white",
-<<<<<<< HEAD
+
           height: "100vh",
           overflowY: "auto",
-=======
+
           minHeight: "100vh", // ✅ Full height fix
           height: "100%", // ✅ Ensures auto-expansion if content grows
           overflowY: "auto", // ✅ Enables scrolling for long content
->>>>>>> 39b0d12 (add new thing)
           transition: "width 0.3s",
           paddingTop: isSidebarOpen ? "10px" : "0",
           whiteSpace: "nowrap",
         }}
       >
-<<<<<<< HEAD
         {/* Close Button */}
 
-=======
->>>>>>> 39b0d12 (add new thing)
         <h2
           style={{
             padding: "15px",
@@ -273,11 +256,7 @@ const Sidebar = ({ setActiveContent }) => {
       {/* Right Side Content */}
       <div
         style={{
-<<<<<<< HEAD
-          flex: "1",
-=======
           flex: "1", // ✅ Ensures this section takes remaining space
->>>>>>> 39b0d12 (add new thing)
           padding: "20px",
           overflowY: "auto",
           backgroundColor: "#f8f9fa",
