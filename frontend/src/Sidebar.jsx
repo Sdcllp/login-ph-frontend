@@ -114,9 +114,8 @@ const Sidebar = ({ setActiveContent }) => {
   ];
 
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
-      {/* Sidebar Toggle Button (Visible only on small screens) */}
-
+    <div style={{ display: "flex", minHeight: "100vh" }}>
+      {/* Sidebar Toggle Button */}
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         style={{
@@ -128,8 +127,7 @@ const Sidebar = ({ setActiveContent }) => {
           fontSize: "24px",
           cursor: "pointer",
           zIndex: 1000,
-
-          display: isSidebarOpen ? "none" : "block", // Show only when sidebar is closed
+          display: isSidebarOpen ? "none" : "block",
         }}
       >
         <FaBars color="white" />
@@ -141,10 +139,6 @@ const Sidebar = ({ setActiveContent }) => {
           width: isSidebarOpen ? "280px" : "0",
           backgroundColor: "#1e293b",
           color: "white",
-
-          height: "100vh",
-          overflowY: "auto",
-
           minHeight: "100vh", // ✅ Full height fix
           height: "100%", // ✅ Ensures auto-expansion if content grows
           overflowY: "auto", // ✅ Enables scrolling for long content
@@ -153,8 +147,6 @@ const Sidebar = ({ setActiveContent }) => {
           whiteSpace: "nowrap",
         }}
       >
-        {/* Close Button */}
-
         <h2
           style={{
             padding: "15px",
