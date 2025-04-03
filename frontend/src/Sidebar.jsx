@@ -84,19 +84,27 @@ const Sidebar = ({ setActiveContent }) => {
           ],
         },
         {
-          name: "Floor Plans (Sheet Series A1.01)",
+          name: "Floor Plan (Sheet serien A1.01) ",
           path: "floor-plans-sheet-series-a101",
           subItems: [
             { name: "X_Floor Plans", path: "x-floor-plans" },
             { name: "RCP", path: "rcp" },
             { name: "Equipment Plan", path: "equipment-plan" },
+            { name: "a101 Architectural Floor Plan", path: "a101-architectural-floor-plan" },
+            {name: "A10 Reflected Ceiling Plan", path: "a102-reflected-ceiling-plan" },
+            {name: "A103-Equipment Floor Plan", path: "a103-equipment-floor-plan" },
+            {name:"A104 Life Safety Plan", path: "a104-life-safety-plan" },
+            {name: "A105 Architectural Roof Plan",path:"a105-architectural-roof-plan" },
+            {name: "A003 Development Site Plan", path: "a003-development-site-plan" },
+            {name: "A004 Fire Access Lane Layout", path: "a004-fire-access-lane-layout" },
+
           ],
         },
         { name: "Elevations SeriesA201", path: "elevations-series-a201" },
         { name: "SectionsSeriesA301", path: "sections-series-a301" },
         {
           name: "Interior Elevations (Series A4.01)",
-          path: "interior-elevations-series-a401",
+          path: "interior-elevations-series-a401", // ✅ Fixed path
           subItems: [{ name: "Enlarge Restrooms", path: "enlarge-restrooms" }],
         },
       ],

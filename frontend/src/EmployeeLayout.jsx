@@ -30,6 +30,15 @@ import CodeSheetSeriesG001 from "./Concepts/CodeSheetSeriesG001 ";
 import G001GenSheetIndex from "./Concepts/G001GenSheetIndex";
 import G002GenNotesSheet from "./Concepts/G002GenNotesSheet";
 import ComCheck from "./Concepts/ComCheck";
+import A101ArchitecturalFloorPlan from "./Concepts/A101ArchitecturalFloorPlan";
+import A102ReflectedCeilingPlan from "./Concepts/A102ReflectedCeilingPlan";
+import A103EquipmentFloorPlan from "./Concepts/A103EquipmentFloorPlan";
+import A104LifeSafetyPlan from "./Concepts/A104LifeSafetyPlan";
+import A105ArchitecturalRoofPlan from "./Concepts/A105ArchitecturalRoofPlan";
+import A003DevelopmentSitePlan from "./Concepts/A003DevelopmentSitePlan";
+import A004FireAccessLanLayout from "./Concepts/A004FireAccessLanLayout";
+
+
 
 const EmployeeLayout = () => {
   const [activeContent, setActiveContent] = useState(null);
@@ -97,6 +106,22 @@ const EmployeeLayout = () => {
         return <G002GenNotesSheet />;
       case "com-check":
         return <ComCheck />;
+        case "a101-architectural-floor-plan":
+          return <A101ArchitecturalFloorPlan />;
+        case "a102-reflected-ceiling-plan":
+          return <A102ReflectedCeilingPlan />;
+        case "a103-equipment-floor-plan":
+          return <A103EquipmentFloorPlan />;
+        case "a104-life-safety-plan":
+          return <A104LifeSafetyPlan />;
+          case "a105-architectural-roof-plan":
+          return <A105ArchitecturalRoofPlan />;
+          case "a003-development-site-plan":
+          return <A003DevelopmentSitePlan />;
+          case "a004-fire-access-lane-layout":
+          return <A004FireAccessLanLayout />;
+  
+
 
       default:
         return (
