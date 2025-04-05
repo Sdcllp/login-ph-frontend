@@ -4,7 +4,7 @@ const A102ReflectedCeilingPlan = () => {
   return (
     <div style={{ padding: "20px", fontFamily: "Calibri, sans-serif" }}>
       <h1 style={{ fontSize: "24px", fontWeight: "bold", color: "#000" }}>
-        01.02 Reflected Ceiling Plan & Details
+        A1.02 Reflected Ceiling Plan & Details
       </h1>
 
       <p style={{ fontSize: "16px", marginBottom: "10px" }}>
