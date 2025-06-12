@@ -1,4 +1,4 @@
-// PH Studio: src/pages/EmbedView.jsx
+// PH Studio frontend EmbedView.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -9,22 +9,28 @@ const EmbedView = () => {
 
   useEffect(() => {
     const token = new URLSearchParams(window.location.search).get("token");
-    if (!token) return navigate("/login");
+    if (!token) {
+      navigate("/login");
+      return;
+    }
 
     axios
-      .post("https://ph-backend.com/api/verify-token", { token })
+      .post("https://ph-studio-backend.onrender.com/api/verify-token", {
+        token,
+      }) // 🟡 your backend URL here
       .then((res) => {
         if (res.data.valid) setIsAllowed(true);
         else navigate("/login");
-      });
+      })
+      .catch(() => navigate("/login"));
   }, []);
 
-  if (!isAllowed) return <p>Checking...</p>;
+  if (!isAllowed) return <p>Checking access...</p>;
 
   return (
     <div>
-      <h2>🎯 Welcome to PH Studio Embed View</h2>
-      {/* Show readonly content here */}
+      <h2>✅ Embed View Loaded Without Login</h2>
+      {/* Add your actual PH Studio content here */}
     </div>
   );
 };
