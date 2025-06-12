@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom"; // ✅ Import Route & Routes
 import Login from "./Login";
 import EmployeeLayout from "./EmployeeLayout";
 import Navbar from "./Navbar";
+import EmbedView from "./pages/EmbedView";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Check authentication on load
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsAuthenticated(!!token);
   }, []);
 
   const handleLogin = () => {
-    localStorage.setItem("token", "dummy_token"); // Fake token for testing
+    localStorage.setItem("token", "dummy_token");
     setIsAuthenticated(true);
   };
 
@@ -23,15 +24,27 @@ const App = () => {
   };
 
   return (
-    <div style={{ fontFamily: "Calibri, sans-serif" }}> {/* ✅ Applied Calibri font */}
-      {isAuthenticated ? (
-        <>
-          <Navbar onLogout={handleLogout} />
-          <EmployeeLayout />
-        </>
-      ) : (
-        <Login onLogin={handleLogin} />
-      )}
+    <div style={{ fontFamily: "Calibri, sans-serif" }}>
+      <Routes>
+        <Route
+          path="/embed-view"
+          element={<EmbedView />}
+        />
+        {/* 👇 Default UI based on login status */}
+        <Route
+          path="/"
+          element={
+            isAuthenticated ? (
+              <>
+                <Navbar onLogout={handleLogout} />
+                <EmployeeLayout />
+              </>
+            ) : (
+              <Login onLogin={handleLogin} />
+            )
+          }
+        />
+      </Routes>
     </div>
   );
 };
