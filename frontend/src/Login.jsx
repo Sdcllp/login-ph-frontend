@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
+// ✅ Dynamic Base URL with full endpoint
 const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL ||
-  (window.location.hostname === "localhost"
+  window.location.hostname === "localhost"
     ? "http://localhost:5000/api/auth/login"
-    : "https://loginph-backend-new.vercel.app/api/auth/login");
+    : "https://loginph-backend-new.vercel.app/api/auth/login";
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
@@ -14,6 +14,8 @@ const Login = ({ onLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(""); // Clear old error
+
     try {
       const res = await fetch(API_BASE_URL, {
         method: "POST",
@@ -22,19 +24,24 @@ const Login = ({ onLogin }) => {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.msg || "Login failed");
+
+      if (!res.ok) {
+        throw new Error(data.msg || "Login failed");
+      }
 
       localStorage.setItem("token", data.token);
-      onLogin();
+      onLogin?.(); // Safe call if onLogin exists
     } catch (err) {
-      setError(err.message);
+      setError(err.message || "Something went wrong");
     }
   };
 
   return (
     <div style={styles.container}>
       <div style={styles.card}>
+        <h2 style={{ marginBottom: "16px" }}>Login</h2>
         {error && <p style={styles.error}>{error}</p>}
+
         <form onSubmit={handleSubmit} style={styles.form}>
           <input
             type="email"
@@ -44,6 +51,7 @@ const Login = ({ onLogin }) => {
             required
             style={styles.input}
           />
+
           <div style={styles.passwordWrapper}>
             <input
               type={showPassword ? "text" : "password"}
@@ -61,6 +69,7 @@ const Login = ({ onLogin }) => {
               {showPassword ? "Hide" : "Show"}
             </button>
           </div>
+
           <button type="submit" style={styles.button}>
             Login
           </button>
@@ -70,31 +79,32 @@ const Login = ({ onLogin }) => {
   );
 };
 
+// ✅ Basic Styling
 const styles = {
   container: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     height: "100vh",
-    backgroundColor: "#e6e6e6",
+    backgroundColor: "#f0f2f5",
   },
   card: {
     backgroundColor: "#fff",
-    padding: "20px",
-    borderRadius: "8px",
-    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-    width: "420px",
-    textAlign: "center",
+    padding: "30px",
+    borderRadius: "10px",
+    boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+    width: "400px",
   },
   error: {
     color: "red",
     fontSize: "14px",
-    marginBottom: "10px",
+    marginBottom: "12px",
+    textAlign: "center",
   },
   form: {
     display: "flex",
     flexDirection: "column",
-    gap: "12px",
+    gap: "15px",
   },
   input: {
     padding: "12px",
@@ -102,8 +112,7 @@ const styles = {
     border: "1px solid #ccc",
     fontSize: "16px",
     width: "100%",
-    backgroundColor: "#eef3ff",
-    boxSizing: "border-box",
+    backgroundColor: "#f9f9f9",
   },
   passwordWrapper: {
     position: "relative",
@@ -127,10 +136,8 @@ const styles = {
     color: "#fff",
     border: "none",
     borderRadius: "6px",
-    cursor: "pointer",
     fontSize: "18px",
-    width: "100%",
-    marginTop: "10px",
+    cursor: "pointer",
   },
 };
 
