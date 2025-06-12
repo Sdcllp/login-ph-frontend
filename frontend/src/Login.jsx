@@ -4,7 +4,7 @@ const API_BASE_URL =
   process.env.REACT_APP_API_BASE_URL ||
   (window.location.hostname === "localhost"
     ? "http://localhost:5000/api/auth/login"
-    : "https://login-ph-backend.vercel.app/api/auth/login");
+    : "https://loginph-backend-new.vercel.app/api/auth/login");
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
