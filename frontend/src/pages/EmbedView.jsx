@@ -15,13 +15,11 @@ const EmbedView = () => {
 
     axios
       .post(
-        "https://loginph-backend-new.vercel.app/api/verify-token",
+        "https://loginph-backend-new.vercel.app/api/verify-token", // ✅ your Vercel backend
         { token },
         {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true, // optional, if backend uses cookies
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
         }
       )
       .then((res) => {
@@ -43,7 +41,6 @@ const EmbedView = () => {
   return (
     <div>
       <h2>✅ Embed View Loaded Without Login</h2>
-      {/* ✅ Your actual PH Studio content goes here */}
     </div>
   );
 };
