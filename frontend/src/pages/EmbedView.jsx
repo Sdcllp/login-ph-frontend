@@ -3,7 +3,7 @@ import axios from "axios";
 
 const EmbedView = () => {
   const [isAllowed, setIsAllowed] = useState(false);
-  const [loading, setLoading] = useState(true); // loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = new URLSearchParams(window.location.search).get("token");
@@ -14,9 +14,16 @@ const EmbedView = () => {
     }
 
     axios
-      .post("https://ph-studio-backend.onrender.com/api/verify-token", {
-        token,
-      })
+      .post(
+        "https://loginph-backend-new.vercel.app/api/verify-token",
+        { token },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true, // optional, if backend uses cookies
+        }
+      )
       .then((res) => {
         if (res.data.valid) {
           setIsAllowed(true);
@@ -31,13 +38,12 @@ const EmbedView = () => {
   }, []);
 
   if (loading) return <p>⏳ Checking token...</p>;
-
   if (!isAllowed) return <p>🔒 Unauthorized access</p>;
 
   return (
     <div>
       <h2>✅ Embed View Loaded Without Login</h2>
-      {/* Add your actual content here */}
+      {/* ✅ Your actual PH Studio content goes here */}
     </div>
   );
 };
